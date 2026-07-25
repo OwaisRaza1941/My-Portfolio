@@ -17,25 +17,29 @@ class MobileHeroSection extends StatelessWidget {
   final ValueChanged<String> onOpenSocial;
   final ImageProvider? profileImage;
 
+  /// Width cap for the whole column so the hero stays readable on tablets held
+  /// in the phone breakpoint and on large phones.
+  static const double _maxWidth = 500;
+
+  static const double _horizontalPadding = 15;
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: ConstrainedBox(
         constraints: const BoxConstraints(
-          maxWidth: 500,
+          maxWidth: _maxWidth,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            // vertical: 24,
+            horizontal: _horizontalPadding,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               HeroRightContent(
                 image: profileImage,
-                    size: AppDimensions.mobileProfileImageSize,
-
+                size: AppDimensions.mobileProfileImageSize,
               ),
 
               const SizedBox(
@@ -46,6 +50,18 @@ class MobileHeroSection extends StatelessWidget {
                 onHireMe: onHireMe,
                 onDownloadCv: onDownloadCv,
                 onOpenSocial: onOpenSocial,
+                maxWidth: _maxWidth,
+                nameFontSize: AppDimensions.mobileHeroNameFontSize,
+                roleFontSize: AppDimensions.mobileHeroRoleFontSize,
+                headlineFontSize: AppDimensions.mobileHeroHeadlineFontSize,
+                greetingFontSize: AppDimensions.mobileHeroGreetingFontSize,
+                descriptionFontSize:
+                    AppDimensions.mobileHeroDescriptionFontSize,
+                buttonHeight: AppDimensions.mobileButtonHeight,
+                buttonHorizontalPadding:
+                    AppDimensions.mobileButtonHorizontalPadding,
+                buttonFontSize: AppDimensions.mobileButtonFontSize,
+                buttonIconSize: AppDimensions.mobileButtonIconSize,
               ),
             ],
           ),

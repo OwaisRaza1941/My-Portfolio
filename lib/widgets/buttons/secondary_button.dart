@@ -18,11 +18,24 @@ class SecondaryButton extends StatelessWidget {
     required this.label,
     required this.onPressed,
     this.icon,
+    this.height = AppDimensions.buttonHeight,
+    this.horizontalPadding = AppDimensions.buttonHorizontalPadding,
+    this.iconSize = _iconSize,
+    this.fontSize,
   });
 
   final String label;
   final VoidCallback onPressed;
   final IconData? icon;
+
+  // Size overrides so compact layouts (tablet/mobile) can shrink the button
+  // without duplicating this widget. [fontSize] null keeps the base style.
+  final double height;
+  final double horizontalPadding;
+  final double iconSize;
+  final double? fontSize;
+
+  static const double _iconSize = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +53,9 @@ class SecondaryButton extends StatelessWidget {
           child: AnimatedContainer(
             duration: AppDurations.fast,
             curve: Curves.easeOut,
-            height: AppDimensions.buttonHeight,
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimensions.buttonHorizontalPadding,
+            height: height,
+            padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding,
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppDimensions.radiusMD),
@@ -69,7 +82,7 @@ class SecondaryButton extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (icon != null) ...[
-                  Icon(icon, size: 18, color: foreground),
+                  Icon(icon, size: iconSize, color: foreground),
                   const SizedBox(width: AppDimensions.buttonIconGap),
                 ],
                 Text(
@@ -77,7 +90,7 @@ class SecondaryButton extends StatelessWidget {
                   style: AppTextStyle.withColor(
                     AppTextStyle.buttonLarge,
                     foreground,
-                  ),
+                  ).copyWith(fontSize: fontSize),
                 ),
               ],
             ),

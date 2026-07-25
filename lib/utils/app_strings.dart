@@ -7,7 +7,7 @@ class AppStrings {
   // Brand
   // ===========================
 
-  static const String logo = 'Owais.';
+  static const String logo = '<Owais>';
   static const String fullName = 'Owais Raza';
   static const String initials = 'OR';
 

@@ -23,17 +23,47 @@ class HeroLeftContent extends StatelessWidget {
     required this.onHireMe,
     required this.onDownloadCv,
     required this.onOpenSocial,
+    this.maxWidth = AppDimensions.heroLeftMaxWidth,
+    this.nameFontSize = _nameFontSize,
+    this.roleFontSize = _roleFontSize,
+    this.headlineFontSize = _headlineFontSize,
+    this.greetingFontSize,
+    this.descriptionFontSize,
+    this.buttonHeight = AppDimensions.buttonHeight,
+    this.buttonHorizontalPadding = AppDimensions.buttonHorizontalPadding,
+    this.buttonFontSize,
+    this.buttonIconSize = _buttonIconSize,
   });
 
   final VoidCallback onHireMe;
   final VoidCallback onDownloadCv;
   final ValueChanged<String> onOpenSocial;
 
+  /// Width cap for the text column. Smaller layouts pass their own value so the
+  /// paragraph never runs wider than the screen.
+  final double maxWidth;
+
+  // Typography overrides so compact layouts (tablet/mobile) can scale the hero
+  // down without duplicating this widget. Null falls back to the base style.
+  final double nameFontSize;
+  final double roleFontSize;
+  final double headlineFontSize;
+  final double? greetingFontSize;
+  final double? descriptionFontSize;
+
+  // Action button sizing, forwarded to the two CTAs so a phone can shrink the
+  // pair enough to keep them on one row.
+  final double buttonHeight;
+  final double buttonHorizontalPadding;
+  final double? buttonFontSize;
+  final double buttonIconSize;
+
   // Hero-specific display sizes, derived from the base heading styles so the
   // typography scale stays centralized (no loose magic numbers in the tree).
   static const double _nameFontSize = 66;
   static const double _roleFontSize = 34;
   static const double _headlineFontSize = 26;
+  static const double _buttonIconSize = 18;
 
   /// Delay helper so the stagger reads as a clean, evenly spaced cascade.
   Duration _delay(int step) => AppDurations.stagger * step;
@@ -41,8 +71,8 @@ class HeroLeftContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(
-        maxWidth: AppDimensions.heroLeftMaxWidth,
+      constraints: BoxConstraints(
+        maxWidth: maxWidth,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -62,7 +92,10 @@ class HeroLeftContent extends StatelessWidget {
               style: AppTextStyle.withColor(
                 AppTextStyle.h3,
                 AppColors.textSecondary,
-              ).copyWith(fontWeight: FontWeight.w400),
+              ).copyWith(
+                fontWeight: FontWeight.w400,
+                fontSize: greetingFontSize,
+              ),
             ),
           ),
           const SizedBox(height: AppDimensions.spaceSM),
@@ -73,7 +106,7 @@ class HeroLeftContent extends StatelessWidget {
             child: GradientText(
               AppStrings.fullName,
               style: AppTextStyle.h1.copyWith(
-                fontSize: _nameFontSize,
+                fontSize: nameFontSize,
                 fontWeight: FontWeight.w700,
                 height: 1.05,
               ),
@@ -90,7 +123,7 @@ class HeroLeftContent extends StatelessWidget {
                 colors: [AppColors.primaryLight, AppColors.accent],
               ),
               style: AppTextStyle.h1.copyWith(
-                fontSize: _roleFontSize,
+                fontSize: roleFontSize,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -103,7 +136,7 @@ class HeroLeftContent extends StatelessWidget {
             child: Text(
               AppStrings.heroHeadline,
               style: AppTextStyle.h2.copyWith(
-                fontSize: _headlineFontSize,
+                fontSize: headlineFontSize,
                 color: AppColors.textPrimary,
                 height: 1.25,
                 fontWeight: FontWeight.w600,
@@ -120,7 +153,10 @@ class HeroLeftContent extends StatelessWidget {
               style: AppTextStyle.withColor(
                 AppTextStyle.bodyLarge,
                 AppColors.textTertiary,
-              ).copyWith(height: 1.7),
+              ).copyWith(
+                height: 1.7,
+                fontSize: descriptionFontSize,
+              ),
             ),
           ),
           const SizedBox(height: AppDimensions.space2XL),
@@ -133,12 +169,20 @@ class HeroLeftContent extends StatelessWidget {
                 PrimaryButton(
                   label: AppStrings.hireMe,
                   onPressed: onHireMe,
+                  height: buttonHeight,
+                  horizontalPadding: buttonHorizontalPadding,
+                  fontSize: buttonFontSize,
+                  iconSize: buttonIconSize,
                 ),
                 const SizedBox(width: AppDimensions.spaceMD),
                 SecondaryButton(
                   label: AppStrings.downloadCv,
                   icon: Icons.file_download_outlined,
                   onPressed: onDownloadCv,
+                  height: buttonHeight,
+                  horizontalPadding: buttonHorizontalPadding,
+                  fontSize: buttonFontSize,
+                  iconSize: buttonIconSize,
                 ),
               ],
             ),

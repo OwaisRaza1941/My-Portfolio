@@ -17,6 +17,10 @@ class PrimaryButton extends StatelessWidget {
     required this.label,
     required this.onPressed,
     this.icon,
+    this.height = AppDimensions.buttonHeight,
+    this.horizontalPadding = AppDimensions.buttonHorizontalPadding,
+    this.iconSize = _iconSize,
+    this.fontSize,
   });
 
   final String label;
@@ -24,6 +28,15 @@ class PrimaryButton extends StatelessWidget {
 
   /// Optional leading icon (FontAwesome or Material).
   final IconData? icon;
+
+  // Size overrides so compact layouts (tablet/mobile) can shrink the button
+  // without duplicating this widget. [fontSize] null keeps the base style.
+  final double height;
+  final double horizontalPadding;
+  final double iconSize;
+  final double? fontSize;
+
+  static const double _iconSize = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +50,9 @@ class PrimaryButton extends StatelessWidget {
           child: AnimatedContainer(
             duration: AppDurations.fast,
             curve: Curves.easeOut,
-            height: AppDimensions.buttonHeight,
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppDimensions.buttonHorizontalPadding,
+            height: height,
+            padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding,
             ),
             transform: Matrix4.translationValues(0, isHovered ? -2 : 0, 0),
             decoration: BoxDecoration(
@@ -60,7 +73,12 @@ class PrimaryButton extends StatelessWidget {
                 ),
               ],
             ),
-            child: _ButtonContent(label: label, icon: icon),
+            child: _ButtonContent(
+              label: label,
+              icon: icon,
+              iconSize: iconSize,
+              fontSize: fontSize,
+            ),
           ),
         );
       },
@@ -70,10 +88,17 @@ class PrimaryButton extends StatelessWidget {
 
 /// Row of icon + label shared by the button variants.
 class _ButtonContent extends StatelessWidget {
-  const _ButtonContent({required this.label, this.icon});
+  const _ButtonContent({
+    required this.label,
+    this.icon,
+    required this.iconSize,
+    this.fontSize,
+  });
 
   final String label;
   final IconData? icon;
+  final double iconSize;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +106,7 @@ class _ButtonContent extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (icon != null) ...[
-          Icon(icon, size: 18, color: AppColors.buttonText),
+          Icon(icon, size: iconSize, color: AppColors.buttonText),
           const SizedBox(width: AppDimensions.buttonIconGap),
         ],
         Text(
@@ -89,7 +114,7 @@ class _ButtonContent extends StatelessWidget {
           style: AppTextStyle.withColor(
             AppTextStyle.buttonLarge,
             AppColors.buttonText,
-          ),
+          ).copyWith(fontSize: fontSize),
         ),
       ],
     );

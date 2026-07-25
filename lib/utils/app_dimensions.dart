@@ -142,4 +142,35 @@ class AppDimensions {
 
   // Mobile Hero
   static const double mobileProfileImageSize = 220;
+
+  // ===========================
+  // Mobile Hero Typography
+  // ===========================
+
+  /// Font sizes for the hero text column on phones. The desktop scale is far
+  /// too large once the column drops to full-bleed width.
+  static const double mobileHeroNameFontSize = 36;
+
+  static const double mobileHeroRoleFontSize = 20;
+
+  static const double mobileHeroHeadlineFontSize = 17;
+
+  static const double mobileHeroGreetingFontSize = 15;
+
+  static const double mobileHeroDescriptionFontSize = 13.5;
+
+  // ===========================
+  // Mobile Buttons
+  // ===========================
+
+  /// The desktop 54px pill is too heavy on phones and the two hero actions
+  /// stop fitting side by side, so the mobile scale trims height, padding,
+  /// and glyph size.
+  static const double mobileButtonHeight = 44;
+
+  static const double mobileButtonHorizontalPadding = 16;
+
+  static const double mobileButtonFontSize = 14;
+
+  static const double mobileButtonIconSize = 16;
 }
