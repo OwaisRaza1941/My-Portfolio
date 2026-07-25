@@ -95,4 +95,5 @@ class AppColors {
   static const Color gmail = Color(0xFFEA4335);
 
   static const Color instagram = Color(0xFFE1306C);
+  static const Color fiver = Color(0xFF1DBF73);
 }

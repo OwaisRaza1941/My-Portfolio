@@ -27,7 +27,7 @@ class SocialIcons extends StatelessWidget {
     ),
     SocialLink(
       label: AppStrings.socialLinkedIn,
-      icon:  FontAwesomeIcons.linkedinIn,
+      icon: FontAwesomeIcons.linkedinIn,
       url: AppStrings.linkedInUrl,
       brandColor: AppColors.linkedin,
     ),
@@ -55,10 +55,7 @@ class SocialIcons extends StatelessWidget {
             padding: const EdgeInsets.only(
               right: AppDimensions.socialIconSpacing,
             ),
-            child: _SocialIconButton(
-              link: link,
-              onTap: () => onOpen(link.url),
-            ),
+            child: _SocialIconButton(link: link, onTap: () => onOpen(link.url)),
           ),
       ],
     );

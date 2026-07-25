@@ -56,6 +56,7 @@ class AppStrings {
   static const String socialLinkedIn = 'LinkedIn';
   static const String socialInstagram = 'Instagram';
   static const String socialEmail = 'Email';
+  static const String socialFiverr= 'Email';
 
   // ===========================
   // Social URLs (replace with real links)
