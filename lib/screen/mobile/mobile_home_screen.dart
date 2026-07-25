@@ -9,8 +9,18 @@ import 'package:portfolio/widgets/navbar/mobile/mobile_drawer.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_navbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MobileHomeScreen extends StatelessWidget {
+class MobileHomeScreen extends StatefulWidget {
   const MobileHomeScreen({super.key});
+
+  @override
+  State<MobileHomeScreen> createState() => _MobileHomeScreenState();
+}
+
+class _MobileHomeScreenState extends State<MobileHomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  /// Mirrors the drawer state so the nav bar can morph its icon into a cross.
+  bool _isDrawerOpen = false;
 
   /// Opens [url] in a new tab, silently ignoring failures (e.g. placeholder
   /// links that aren't wired up yet).
@@ -33,11 +43,29 @@ class MobileHomeScreen extends StatelessWidget {
     // Section scrolling will be wired up as more sections are added.
   }
 
+  /// Opens or closes the end drawer from the nav bar toggle.
+  void _toggleDrawer() {
+    final scaffold = _scaffoldKey.currentState;
+    if (scaffold == null) return;
+    scaffold.isEndDrawerOpen
+        ? scaffold.closeEndDrawer()
+        : scaffold.openEndDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: MobileDrawer(onNavItemTap: _onNavItemTap, onHireMe: _onHireMe),
+      key: _scaffoldKey,
       backgroundColor: AppColors.scaffoldBackground,
+      // Dim the page with the brand navy instead of Material's flat black.
+      drawerScrimColor: AppColors.scaffoldBackground.withValues(alpha: 0.7),
+      onEndDrawerChanged: (isOpen) => setState(() => _isDrawerOpen = isOpen),
+      endDrawer: MobileDrawer(
+        activeAnchor: 'home',
+        onNavItemTap: _onNavItemTap,
+        onHireMe: _onHireMe,
+        onOpenSocial: _openUrl,
+      ),
       body: Stack(
         children: [
           const AnimatedBackground(),
@@ -45,9 +73,8 @@ class MobileHomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 MobileNavbar(
-                  activeAnchor: 'home',
-                  onNavItemTap: _onNavItemTap,
-                  onHireMe: _onHireMe,
+                  isDrawerOpen: _isDrawerOpen,
+                  onMenuTap: _toggleDrawer,
                   onLogoTap: () {},
                 ),
                 Expanded(
@@ -67,7 +94,7 @@ class MobileHomeScreen extends StatelessWidget {
                                 onHireMe: _onHireMe,
                                 onDownloadCv: _onDownloadCv,
                                 onOpenSocial: _openUrl,
-                                profileImage: AssetImage(
+                                profileImage: const AssetImage(
                                   'assets/images/owais_profile.png',
                                 ),
                               ),

@@ -8,6 +8,7 @@ import 'package:portfolio/utils/app_strings.dart';
 import 'package:portfolio/widgets/buttons/primary_button.dart';
 import 'package:portfolio/widgets/navbar/desktop/brand_logo.dart';
 import 'package:portfolio/widgets/navbar/desktop/nav_link.dart';
+import 'package:portfolio/widgets/navbar/mobile/menu_toggle_button.dart';
 
 class TabletNavbar extends StatelessWidget {
   const TabletNavbar({
@@ -15,6 +16,8 @@ class TabletNavbar extends StatelessWidget {
     required this.onNavItemTap,
     required this.onHireMe,
     required this.onLogoTap,
+    required this.onMenuTap,
+    this.isDrawerOpen = false,
     this.activeAnchor,
   });
 
@@ -23,8 +26,18 @@ class TabletNavbar extends StatelessWidget {
   final VoidCallback onHireMe;
   final VoidCallback onLogoTap;
 
+  /// Opens (or closes) the navigation drawer on the compact tablet width.
+  final VoidCallback onMenuTap;
+
+  /// Drives the hamburger → cross morph on the toggle button.
+  final bool isDrawerOpen;
+
   /// Anchor of the section currently in view, highlighted in the bar.
   final String? activeAnchor;
+
+  /// Below this width the inline links stop fitting, so the bar collapses into
+  /// the drawer toggle.
+  static const double compactBreakpoint = 900;
 
   /// The navigation entries, in display order.
   static const List<NavItem> _items = [
@@ -38,8 +51,8 @@ class TabletNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final bool showHamburger = width < 900;
+    final width = MediaQuery.sizeOf(context).width;
+    final bool showHamburger = width < compactBreakpoint;
     return ClipRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
@@ -70,15 +83,10 @@ class TabletNavbar extends StatelessWidget {
                     const Spacer(),
 
                     if (showHamburger)
-                      IconButton(
-                        onPressed: () {
-                          // Drawer baad mein banayenge
-                        },
-                        icon: const Icon(
-                          Icons.menu_rounded,
-                          color: AppColors.textPrimary,
-                          size: 28,
-                        ),
+                      MenuToggleButton(
+                        isOpen: isDrawerOpen,
+                        onTap: onMenuTap,
+                        tooltip: isDrawerOpen ? 'Close menu' : 'Menu',
                       )
                     else ...[
                       _NavLinks(
@@ -105,7 +113,6 @@ class TabletNavbar extends StatelessWidget {
         ),
       ),
     );
-  
   }
 }
 

@@ -124,6 +124,26 @@ class AppDimensions {
 
   static const double tabletProfileImageSize = 300;
 
+  /// Breathing room around the tablet portrait, so its outer glow and the
+  /// floating availability badge aren't clipped by the column edge.
+  static const double tabletProfilePadding = 32;
+
+  // ===========================
+  // Tablet Hero Typography
+  // ===========================
+
+  /// The desktop scale (66/34/26) overflows once the text column drops to the
+  /// tablet width, so the hero steps down a notch here.
+  static const double tabletHeroNameFontSize = 46;
+
+  static const double tabletHeroRoleFontSize = 26;
+
+  static const double tabletHeroHeadlineFontSize = 20;
+
+  static const double tabletHeroGreetingFontSize = 17;
+
+  static const double tabletHeroDescriptionFontSize = 15;
+
   // ===========================
   // Tablet Buttons
   // ===========================
@@ -131,6 +151,10 @@ class AppDimensions {
   static const double tabletButtonHeight = 46;
 
   static const double tabletButtonHorizontalPadding = 20;
+
+  static const double tabletButtonFontSize = 15;
+
+  static const double tabletButtonIconSize = 17;
 
   // ===========================
   // Tablet Social Icons
@@ -158,6 +182,49 @@ class AppDimensions {
   static const double mobileHeroGreetingFontSize = 15;
 
   static const double mobileHeroDescriptionFontSize = 13.5;
+
+  // ===========================
+  // Mobile Navigation
+  // ===========================
+
+  /// Height of the sticky top bar on phones. Slightly shorter than the tablet
+  /// bar so the hero keeps more vertical room.
+  static const double mobileNavBarHeight = 72;
+
+  /// Horizontal padding of the mobile nav bar and drawer content.
+  static const double mobileHorizontalPadding = 20;
+
+  /// Size of the square glass menu / close toggle in the nav bar.
+  static const double mobileMenuButtonSize = 42;
+
+  /// Glyph size inside the menu / close toggle.
+  static const double mobileMenuIconSize = 22;
+
+  // ===========================
+  // Mobile Drawer
+  // ===========================
+
+  /// Preferred drawer width. Clamped against the screen width at build time so
+  /// it never covers the whole viewport on small phones.
+  static const double mobileDrawerWidth = 320;
+
+  /// Fraction of the screen the drawer may occupy at most.
+  static const double mobileDrawerWidthFactor = 0.86;
+
+  /// Vertical padding of a single drawer nav row.
+  static const double mobileDrawerItemVerticalPadding = 14;
+
+  /// Horizontal padding of a single drawer nav row.
+  static const double mobileDrawerItemHorizontalPadding = 14;
+
+  /// Gap between two drawer nav rows.
+  static const double mobileDrawerItemGap = 6;
+
+  /// Width of the accent bar that marks the active drawer row.
+  static const double mobileDrawerActiveBarWidth = 3;
+
+  /// Height of the accent bar that marks the active drawer row.
+  static const double mobileDrawerActiveBarHeight = 20;
 
   // ===========================
   // Mobile Buttons

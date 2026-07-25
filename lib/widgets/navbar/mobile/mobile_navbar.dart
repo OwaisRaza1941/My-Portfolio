@@ -1,26 +1,30 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:portfolio/models/nav_item.dart';
-import 'package:portfolio/utils/app_color.dart';
-import 'package:portfolio/utils/app_dimensions.dart';
-import 'package:portfolio/widgets/navbar/desktop/brand_logo.dart';
+import '../../../utils/app_color.dart';
+import '../../../utils/app_dimensions.dart';
+import '../desktop/brand_logo.dart';
+import 'menu_toggle_button.dart';
 
+/// The sticky top bar on phones: brand wordmark on the left, a glass
+/// menu / close toggle on the right.
+///
+/// The bar is a frosted translucent panel so the animated background stays
+/// visible behind it, capped by a hairline border that fades into the page.
 class MobileNavbar extends StatelessWidget {
   const MobileNavbar({
     super.key,
-    required this.onNavItemTap,
-    required this.onHireMe,
+    required this.onMenuTap,
     required this.onLogoTap,
-    this.activeAnchor,
+    this.isDrawerOpen = false,
   });
 
-  /// Called with the tapped item's anchor so the parent can scroll to it.
-  final ValueChanged<NavItem> onNavItemTap;
-  final VoidCallback onHireMe;
+  /// Opens (or closes) the navigation drawer.
+  final VoidCallback onMenuTap;
+
   final VoidCallback onLogoTap;
 
-  /// Anchor of the section currently in view, highlighted in the bar.
-  final String? activeAnchor;
+  /// Drives the hamburger → cross morph on the toggle button.
+  final bool isDrawerOpen;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +32,19 @@ class MobileNavbar extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
         child: Container(
-          height: AppDimensions.tabletNavBarHeight,
+          height: AppDimensions.mobileNavBarHeight,
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppDimensions.mobileHorizontalPadding,
+          ),
           decoration: BoxDecoration(
-            color: AppColors.scaffoldBackground.withValues(alpha: 0.55),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                AppColors.scaffoldBackground.withValues(alpha: 0.72),
+                AppColors.scaffoldBackground.withValues(alpha: 0.45),
+              ],
+            ),
             border: Border(
               bottom: BorderSide(
                 color: AppColors.border.withValues(alpha: 0.6),
@@ -38,31 +52,16 @@ class MobileNavbar extends StatelessWidget {
               ),
             ),
           ),
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: double.infinity),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  children: [
-                    BrandLogo(onTap: onLogoTap),
-
-                    const Spacer(),
-
-                    IconButton(
-                      onPressed: () {
-                        Scaffold.of(context).openEndDrawer();
-                      },
-                      icon: const Icon(
-                        Icons.menu_rounded,
-                        color: AppColors.textPrimary,
-                        size: 28,
-                      ),
-                    ),
-                  ],
-                ),
+          child: Row(
+            children: [
+              BrandLogo(onTap: onLogoTap),
+              const Spacer(),
+              MenuToggleButton(
+                isOpen: isDrawerOpen,
+                onTap: onMenuTap,
+                tooltip: isDrawerOpen ? 'Close menu' : 'Menu',
               ),
-            ),
+            ],
           ),
         ),
       ),
