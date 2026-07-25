@@ -16,11 +16,32 @@ import '../../common/blinking_caret.dart';
 /// It is purely decorative: the snippet is static content, and a blinking caret
 /// on the last line gives it the feel of a live editor.
 class CodeWindow extends StatelessWidget {
-  const CodeWindow({super.key, this.fontSize});
+  const CodeWindow({
+    super.key,
+    this.fontSize,
+    this.padding = AppDimensions.aboutCodeWindowPadding,
+    this.lineHeight = AppDimensions.aboutCodeLineHeight,
+    this.gutterWidth = AppDimensions.aboutCodeGutterWidth,
+    this.gutterGap = AppDimensions.spaceMD,
+  });
 
   /// Overrides the snippet's font size so compact layouts can shrink the
   /// window without reflowing the code.
   final double? fontSize;
+
+  /// Inset around the snippet. Trimming this on phones buys back the width the
+  /// code needs to stay un-clipped.
+  final double padding;
+
+  /// Height of one rendered code line, kept in step with [fontSize] so a
+  /// smaller snippet doesn't read as double-spaced.
+  final double lineHeight;
+
+  /// Width of the line-number gutter and the space after it. The desktop
+  /// gutter is sized for 13pt digits; at a phone's font size it would waste
+  /// width the longest snippet line needs.
+  final double gutterWidth;
+  final double gutterGap;
 
   /// The snippet, described as tokens so this widget owns the palette.
   static const List<CodeLine> _snippet = [
@@ -167,9 +188,7 @@ class CodeWindow extends StatelessWidget {
                 children: [
                   const _WindowChrome(),
                   Padding(
-                    padding: const EdgeInsets.all(
-                      AppDimensions.aboutCodeWindowPadding,
-                    ),
+                    padding: EdgeInsets.all(padding),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,6 +198,9 @@ class CodeWindow extends StatelessWidget {
                             lineNumber: i + 1,
                             tokens: _snippet[i],
                             style: codeStyle,
+                            height: lineHeight,
+                            gutterWidth: gutterWidth,
+                            gutterGap: gutterGap,
                             showCaret: i == lastIndex,
                           ),
                       ],
@@ -311,30 +333,36 @@ class _CodeLineView extends StatelessWidget {
     required this.lineNumber,
     required this.tokens,
     required this.style,
+    required this.height,
+    required this.gutterWidth,
+    required this.gutterGap,
     required this.showCaret,
   });
 
   final int lineNumber;
   final CodeLine tokens;
   final TextStyle style;
+  final double height;
+  final double gutterWidth;
+  final double gutterGap;
   final bool showCaret;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppDimensions.aboutCodeLineHeight,
+      height: height,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: AppDimensions.aboutCodeGutterWidth,
+            width: gutterWidth,
             child: Text(
               '$lineNumber',
               textAlign: TextAlign.right,
               style: style.copyWith(color: AppColors.codeLineNumber),
             ),
           ),
-          const SizedBox(width: AppDimensions.spaceMD),
+          SizedBox(width: gutterGap),
           // Long lines clip at the window edge rather than overflowing, which
           // keeps the window safe at any column width.
           Flexible(

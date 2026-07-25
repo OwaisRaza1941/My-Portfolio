@@ -3,6 +3,7 @@ import 'package:portfolio/models/nav_item.dart';
 import 'package:portfolio/utils/app_color.dart';
 import 'package:portfolio/utils/app_dimensions.dart';
 import 'package:portfolio/utils/app_strings.dart';
+import 'package:portfolio/widgets/about/mobile/mobile_about_section.dart';
 import 'package:portfolio/widgets/background/animated_background.dart';
 import 'package:portfolio/widgets/hero/mobile/mobile_hero_section.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_drawer.dart';
@@ -90,13 +91,21 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
                               vertical: AppDimensions.spaceMD,
                             ),
                             child: Center(
-                              child: MobileHeroSection(
-                                onHireMe: _onHireMe,
-                                onDownloadCv: _onDownloadCv,
-                                onOpenSocial: _openUrl,
-                                profileImage: const AssetImage(
-                                  'assets/images/owais_profile.png',
-                                ),
+                              child: Column(
+                                children: [
+                                  MobileHeroSection(
+                                    onHireMe: _onHireMe,
+                                    onDownloadCv: _onDownloadCv,
+                                    onOpenSocial: _openUrl,
+                                    profileImage: const AssetImage(
+                                      'assets/images/owais_profile.png',
+                                    ),
+                                  ),
+                                  MobileAboutSection(
+                                    onViewProjects: () {},
+                                    onDownloadCv: _onDownloadCv,
+                                  ),
+                                ],
                               ),
                             ),
                           ),

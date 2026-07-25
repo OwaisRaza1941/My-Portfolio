@@ -28,6 +28,10 @@ class AboutContent extends StatelessWidget {
     this.buttonHeight = AppDimensions.buttonHeight,
     this.buttonHorizontalPadding = AppDimensions.buttonHorizontalPadding,
     this.buttonFontSize,
+    this.buttonIconSize,
+    this.statValueFontSize,
+    this.statLabelFontSize = AppDimensions.aboutStatLabelFontSize,
+    this.statGap = AppDimensions.aboutStatGap,
   });
 
   final VoidCallback onViewProjects;
@@ -40,6 +44,13 @@ class AboutContent extends StatelessWidget {
   final double buttonHeight;
   final double buttonHorizontalPadding;
   final double? buttonFontSize;
+  final double? buttonIconSize;
+
+  // Headline-number overrides — the desktop stat strip needs both a smaller
+  // figure and a much tighter gutter before it fits a phone.
+  final double? statValueFontSize;
+  final double statLabelFontSize;
+  final double statGap;
 
   /// The strengths shown in the 2-up grid, in display order.
   static const List<AboutHighlight> _highlights = [
@@ -64,6 +75,10 @@ class AboutContent extends StatelessWidget {
       body: AppStrings.aboutHighlightPerformanceBody,
     ),
   ];
+
+  /// Matches the buttons' own default, so leaving [buttonIconSize] unset keeps
+  /// the desktop rendering byte-for-byte identical.
+  static const double _defaultButtonIconSize = 18;
 
   /// Staggered after the header so the column assembles top-to-bottom.
   Duration _delay(int step) => AppDurations.stagger * (4 + step);
@@ -116,7 +131,14 @@ class AboutContent extends StatelessWidget {
         const SizedBox(height: AppDimensions.spaceXL),
 
         // Headline numbers.
-        FadeSlideIn(delay: _delay(4), child: const AboutStats()),
+        FadeSlideIn(
+          delay: _delay(4),
+          child: AboutStats(
+            valueFontSize: statValueFontSize,
+            labelFontSize: statLabelFontSize,
+            gap: statGap,
+          ),
+        ),
         const SizedBox(height: AppDimensions.spaceXL),
 
         // Actions.
@@ -133,6 +155,7 @@ class AboutContent extends StatelessWidget {
                 height: buttonHeight,
                 horizontalPadding: buttonHorizontalPadding,
                 fontSize: buttonFontSize,
+                iconSize: buttonIconSize ?? _defaultButtonIconSize,
               ),
               SecondaryButton(
                 label: AppStrings.downloadCv,
@@ -141,6 +164,7 @@ class AboutContent extends StatelessWidget {
                 height: buttonHeight,
                 horizontalPadding: buttonHorizontalPadding,
                 fontSize: buttonFontSize,
+                iconSize: buttonIconSize ?? _defaultButtonIconSize,
               ),
             ],
           ),

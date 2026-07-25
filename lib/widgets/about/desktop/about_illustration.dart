@@ -25,6 +25,10 @@ class AboutIllustration extends StatelessWidget {
     this.maxWidth = AppDimensions.aboutIllustrationMaxWidth,
     this.padding = AppDimensions.aboutIllustrationPadding,
     this.codeFontSize,
+    this.codePadding = AppDimensions.aboutCodeWindowPadding,
+    this.codeLineHeight = AppDimensions.aboutCodeLineHeight,
+    this.codeGutterWidth = AppDimensions.aboutCodeGutterWidth,
+    this.codeGutterGap = AppDimensions.spaceMD,
   });
 
   /// Preferred width of the window. Treated as a maximum — a narrower column
@@ -35,8 +39,13 @@ class AboutIllustration extends StatelessWidget {
   /// that overhang its edges.
   final double padding;
 
-  /// Forwarded to [CodeWindow] so compact layouts can shrink the snippet.
+  /// Forwarded to [CodeWindow] so compact layouts can shrink the snippet, tuck
+  /// its padding in, and tighten the line rhythm to match.
   final double? codeFontSize;
+  final double codePadding;
+  final double codeLineHeight;
+  final double codeGutterWidth;
+  final double codeGutterGap;
 
   /// The stack badges, with the corner each one hangs off.
   static const List<_PositionedBadge> _badges = [
@@ -97,7 +106,13 @@ class AboutIllustration extends StatelessWidget {
                   children: [
                     // Halo behind the window, sized to it.
                     const Positioned.fill(child: _Halo()),
-                    CodeWindow(fontSize: codeFontSize),
+                    CodeWindow(
+                      fontSize: codeFontSize,
+                      padding: codePadding,
+                      lineHeight: codeLineHeight,
+                      gutterWidth: codeGutterWidth,
+                      gutterGap: codeGutterGap,
+                    ),
                     for (final entry in _badges)
                       Positioned.fill(
                         child: Align(

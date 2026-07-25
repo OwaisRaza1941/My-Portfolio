@@ -13,10 +13,21 @@ import '../../common/gradient_text.dart';
 /// It sits between the highlight grid and the call-to-action so the section ends
 /// on something concrete.
 class AboutStats extends StatelessWidget {
-  const AboutStats({super.key, this.valueFontSize});
+  const AboutStats({
+    super.key,
+    this.valueFontSize,
+    this.labelFontSize = AppDimensions.aboutStatLabelFontSize,
+    this.gap = AppDimensions.aboutStatGap,
+  });
 
   /// Override for the large figure size, so compact layouts can scale down.
   final double? valueFontSize;
+
+  final double labelFontSize;
+
+  /// Gutter on either side of each divider. Both dividers together eat most of
+  /// a phone's width at the desktop value, so mobile tightens it right down.
+  final double gap;
 
   static const List<AboutStat> _stats = [
     AboutStat(
@@ -40,11 +51,12 @@ class AboutStats extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           for (var i = 0; i < _stats.length; i++) ...[
-            if (i > 0) const _StatDivider(),
+            if (i > 0) _StatDivider(gap: gap),
             Flexible(
               child: _StatTile(
                 stat: _stats[i],
                 valueFontSize: valueFontSize,
+                labelFontSize: labelFontSize,
               ),
             ),
           ],
@@ -55,10 +67,15 @@ class AboutStats extends StatelessWidget {
 }
 
 class _StatTile extends StatelessWidget {
-  const _StatTile({required this.stat, this.valueFontSize});
+  const _StatTile({
+    required this.stat,
+    required this.labelFontSize,
+    this.valueFontSize,
+  });
 
   final AboutStat stat;
   final double? valueFontSize;
+  final double labelFontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +100,7 @@ class _StatTile extends StatelessWidget {
           style: AppTextStyle.withColor(
             AppTextStyle.bodySmall,
             AppColors.textTertiary,
-          ).copyWith(fontSize: AppDimensions.aboutStatLabelFontSize),
+          ).copyWith(fontSize: labelFontSize),
         ),
       ],
     );
@@ -92,16 +109,16 @@ class _StatTile extends StatelessWidget {
 
 /// A thin vertical rule that fades out at both ends.
 class _StatDivider extends StatelessWidget {
-  const _StatDivider();
+  const _StatDivider({required this.gap});
+
+  final double gap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: AppDimensions.borderThin,
       height: AppDimensions.aboutStatDividerHeight,
-      margin: const EdgeInsets.symmetric(
-        horizontal: AppDimensions.aboutStatGap,
-      ),
+      margin: EdgeInsets.symmetric(horizontal: gap),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,

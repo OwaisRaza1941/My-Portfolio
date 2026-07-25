@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../utils/app_dimensions.dart';
 import 'about_content.dart';
 import 'about_header.dart';

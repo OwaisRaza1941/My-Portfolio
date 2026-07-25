@@ -259,6 +259,52 @@ class AppDimensions {
 
   static const double tabletSocialIconGlyphSize = 16;
 
+  // ===========================
+  // Tablet About
+  // ===========================
+
+  /// The desktop about section runs the illustration and the prose side by
+  /// side. On the tablet measure that would squeeze the code window below
+  /// readability, so the tablet layout stacks them and caps the column instead.
+  static const double tabletAboutMaxWidth = 700;
+
+  static const double tabletAboutSectionVerticalPadding = space3XL;
+
+  static const double tabletAboutHeaderBottomGap = space2XL;
+
+  /// Space between the stacked illustration and the content column.
+  static const double tabletAboutStackGap = space2XL;
+
+  static const double tabletAboutHeaderMaxWidth = 600;
+
+  static const double tabletAboutIllustrationMaxWidth = 460;
+
+  static const double tabletAboutIllustrationPadding = spaceXL;
+
+  // ===========================
+  // Tablet About Typography
+  // ===========================
+
+  static const double tabletAboutTitleFontSize = 34;
+
+  static const double tabletAboutSubtitleFontSize = 15.5;
+
+  static const double tabletAboutHeadlineFontSize = 24;
+
+  static const double tabletAboutBodyFontSize = 14.5;
+
+  static const double tabletAboutStatValueFontSize = 26;
+
+  // ===========================
+  // Tablet About Code Window
+  // ===========================
+
+  static const double tabletAboutCodeFontSize = 12;
+
+  static const double tabletAboutCodePadding = spaceMD + spaceXS;
+
+  static const double tabletAboutCodeLineHeight = 22;
+
   // Mobile Hero
   static const double mobileProfileImageSize = 220;
 
@@ -335,4 +381,67 @@ class AppDimensions {
   static const double mobileButtonFontSize = 14;
 
   static const double mobileButtonIconSize = 16;
+
+  // ===========================
+  // Mobile About
+  // ===========================
+
+  /// Matches the mobile hero's measure so both sections share one column edge.
+  static const double mobileAboutMaxWidth = 500;
+
+  static const double mobileAboutHorizontalPadding = 15;
+
+  static const double mobileAboutSectionVerticalPadding = space2XL;
+
+  static const double mobileAboutHeaderBottomGap = spaceXL;
+
+  /// Space between the stacked illustration and the content column.
+  static const double mobileAboutStackGap = spaceXL;
+
+  static const double mobileAboutIllustrationMaxWidth = 340;
+
+  /// A little tighter than [aboutTechBadgeOverhang]: the floating stack badges
+  /// spill 12px past this box, which the page's own side padding absorbs. Every
+  /// pixel saved here goes to the code window, which is the tightest thing on
+  /// the page at phone widths.
+  static const double mobileAboutIllustrationPadding = spaceMD + spaceXS;
+
+  // ===========================
+  // Mobile About Typography
+  // ===========================
+
+  static const double mobileAboutTitleFontSize = 27;
+
+  static const double mobileAboutSubtitleFontSize = 13.5;
+
+  static const double mobileAboutHeadlineFontSize = 20;
+
+  static const double mobileAboutBodyFontSize = 13.5;
+
+  static const double mobileAboutStatValueFontSize = 22;
+
+  static const double mobileAboutStatLabelFontSize = 11;
+
+  /// The desktop 24pt stat gutter eats most of a phone's width once both
+  /// dividers are counted, so the mobile strip tightens right down.
+  static const double mobileAboutStatGap = spaceSM;
+
+  // ===========================
+  // Mobile About Code Window
+  // ===========================
+
+  /// Sized so the snippet's longest line clears a 360pt phone without
+  /// truncating. It is decorative rather than something to read line by line,
+  /// so legibility of the shape matters more than of the individual glyph.
+  static const double mobileAboutCodeFontSize = 9;
+
+  static const double mobileAboutCodePadding = spaceSM + spaceXS;
+
+  static const double mobileAboutCodeLineHeight = 16;
+
+  /// The 32pt desktop gutter is sized for 13pt digits; at the phone's snippet
+  /// size it would swallow width the longest code line needs.
+  static const double mobileAboutCodeGutterWidth = 18;
+
+  static const double mobileAboutCodeGutterGap = spaceXS + 2;
 }
