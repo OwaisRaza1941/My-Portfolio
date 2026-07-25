@@ -49,6 +49,84 @@ class AppStrings {
   static const String availability = 'Available for work';
 
   // ===========================
+  // About — Header
+  // ===========================
+
+  static const String aboutBadgeEmoji = '👋';
+  static const String aboutBadge = 'About Me';
+  static const String aboutTitle = 'Who I Am & What I Do';
+  static const String aboutSubtitle =
+      'A passionate Flutter Developer focused on building modern, scalable '
+      'and high-performance applications.';
+
+  // ===========================
+  // About — Right Column
+  // ===========================
+
+  static const String aboutHeadline =
+      'Turning ideas into polished,\nproduction-ready products';
+
+  static const String aboutParagraphOne =
+      "I'm Owais Raza, a Flutter developer who cares as much about how a "
+      'product is built as how it looks. I design and ship cross-platform '
+      'apps for mobile and web from a single, well-structured codebase.';
+
+  static const String aboutParagraphTwo =
+      'My work leans on clean architecture, reusable widgets, and a strict '
+      'design system — so features stay easy to extend, the UI stays '
+      'consistent, and the app stays fast as it grows.';
+
+  // ===========================
+  // About — Highlights
+  // ===========================
+
+  static const String aboutHighlightArchitectureTitle = 'Clean Architecture';
+  static const String aboutHighlightArchitectureBody =
+      'Layered, testable code that scales with the product.';
+
+  static const String aboutHighlightUiTitle = 'Pixel-Perfect UI';
+  static const String aboutHighlightUiBody =
+      'Designs rebuilt faithfully, down to spacing and motion.';
+
+  static const String aboutHighlightCrossPlatformTitle = 'Cross-Platform';
+  static const String aboutHighlightCrossPlatformBody =
+      'Android, iOS, and web shipped from one codebase.';
+
+  static const String aboutHighlightPerformanceTitle = 'Performance First';
+  static const String aboutHighlightPerformanceBody =
+      'Smooth 60fps motion and lean, efficient rebuilds.';
+
+  // ===========================
+  // About — Stats
+  // ===========================
+
+  static const String aboutStatExperienceValue = '2+';
+  static const String aboutStatExperienceLabel = 'Years Experience';
+
+  static const String aboutStatProjectsValue = '15+';
+  static const String aboutStatProjectsLabel = 'Projects Built';
+
+  static const String aboutStatCommitmentValue = '100%';
+  static const String aboutStatCommitmentLabel = 'Commitment';
+
+  // ===========================
+  // About — Illustration
+  // ===========================
+
+  /// Filename shown in the code window's title bar.
+  static const String aboutCodeFileName = 'about_me.dart';
+
+  static const String aboutTechFlutter = 'Flutter';
+  static const String aboutTechDart = 'Dart';
+  static const String aboutTechFirebase = 'Firebase';
+
+  // ===========================
+  // About — Actions
+  // ===========================
+
+  static const String aboutViewProjects = 'View Projects';
+
+  // ===========================
   // Social (semantic labels / tooltips)
   // ===========================
 

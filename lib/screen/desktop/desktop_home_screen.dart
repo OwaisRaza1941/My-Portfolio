@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/about/desktop/about_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/nav_item.dart';
 import '../../utils/app_color.dart';
@@ -66,13 +67,22 @@ class DesktopHomeScreen extends StatelessWidget {
                               vertical: AppDimensions.space2XL,
                             ),
                             child: Center(
-                              child: HeroSection(
-                                onHireMe: _onHireMe,
-                                onDownloadCv: _onDownloadCv,
-                                onOpenSocial: _openUrl,
-                                profileImage: AssetImage(
-                                  'assets/images/owais_profile.png',
-                                ),
+                              child: Column(
+                                children: [
+                                  HeroSection(
+                                    onHireMe: _onHireMe,
+                                    onDownloadCv: _onDownloadCv,
+                                    onOpenSocial: _openUrl,
+                                    profileImage: AssetImage(
+                                      'assets/images/owais_profile.png',
+                                    ),
+                                  ),
+
+                                  AboutSection(
+                                    onViewProjects: () {},
+                                    onDownloadCv: _onDownloadCv,
+                                  ),
+                                ],
                               ),
                             ),
                           ),

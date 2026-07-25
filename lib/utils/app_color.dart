@@ -85,6 +85,43 @@ class AppColors {
   static const Color divider = Color(0xFF273244);
 
   // ===========================
+  // Tech Brands
+  // ===========================
+
+  /// Brand tints for the floating stack badges. Each is the lighter end of the
+  /// official brand color so it stays legible on the dark surface.
+  static const Color flutterBrand = Color(0xFF54C5F8);
+
+  static const Color dartBrand = Color(0xFF29B6F6);
+
+  static const Color firebaseBrand = Color(0xFFFFCA28);
+
+  // ===========================
+  // Code Syntax (about illustration)
+  // ===========================
+
+  /// Palette for the faux Dart snippet inside the about-section code window.
+  /// Kept deliberately close to the brand blues so the illustration reads as
+  /// part of the design rather than a screenshot pasted on top of it.
+  static const Color codeWindowBackground = Color(0xFF0A1020);
+
+  static const Color codeKeyword = Color(0xFFC084FC);
+
+  static const Color codeType = Color(0xFF60A5FA);
+
+  static const Color codeString = Color(0xFF86EFAC);
+
+  static const Color codeAnnotation = Color(0xFFFBBF24);
+
+  static const Color codePunctuation = Color(0xFF94A3B8);
+
+  static const Color codeComment = Color(0xFF64748B);
+
+  static const Color codeText = Color(0xFFE2E8F0);
+
+  static const Color codeLineNumber = Color(0xFF475569);
+
+  // ===========================
   // Social
   // ===========================
 

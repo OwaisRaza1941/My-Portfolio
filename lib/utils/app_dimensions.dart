@@ -85,6 +85,101 @@ class AppDimensions {
   static const double profileFloatAmplitude = 14;
 
   // ===========================
+  // About Section (Desktop)
+  // ===========================
+
+  /// Vertical breathing room above and below the whole about section.
+  static const double aboutSectionVerticalPadding = space4XL;
+
+  /// Gap between the illustration column and the content column.
+  static const double aboutColumnGap = space3XL;
+
+  /// Width cap for the centered header block, so the subtitle wraps into a
+  /// balanced two-line paragraph instead of one very wide line.
+  static const double aboutHeaderMaxWidth = 720;
+
+  /// Space between the centered header and the two-column body.
+  static const double aboutHeaderBottomGap = space4XL;
+
+  // ===========================
+  // About Typography
+  // ===========================
+
+  static const double aboutTitleFontSize = 44;
+  static const double aboutSubtitleFontSize = 17;
+  static const double aboutHeadlineFontSize = 28;
+  static const double aboutBodyFontSize = 15;
+
+  // ===========================
+  // About Illustration (code window)
+  // ===========================
+
+  /// Preferred width of the code-window illustration. Treated as a maximum so
+  /// the window shrinks with its column instead of overflowing.
+  static const double aboutIllustrationMaxWidth = 520;
+
+  /// Breathing room around the window, reserved for its glow and the floating
+  /// tech badges that hang off its edges.
+  static const double aboutIllustrationPadding = space2XL;
+
+  static const double aboutCodeWindowRadius = 18;
+
+  /// Height of the faux title bar with the traffic-light dots.
+  static const double aboutCodeWindowChromeHeight = 44;
+
+  static const double aboutCodeWindowPadding = spaceLG;
+
+  /// Diameter of a single traffic-light dot.
+  static const double aboutWindowDotSize = 11;
+
+  static const double aboutWindowDotSpacing = spaceSM;
+
+  /// Width of the line-number gutter beside the snippet.
+  static const double aboutCodeGutterWidth = 32;
+
+  /// Height of one rendered code line.
+  static const double aboutCodeLineHeight = 24;
+
+  /// Width and height of the blinking caret after the last line.
+  static const double aboutCaretWidth = 7;
+  static const double aboutCaretHeight = 15;
+
+  // ===========================
+  // About Tech Badges
+  // ===========================
+
+  static const double aboutTechBadgeIconSize = 15;
+
+  /// How far the floating badges overhang the window edge.
+  static const double aboutTechBadgeOverhang = spaceXL;
+
+  // ===========================
+  // About Highlight Tiles
+  // ===========================
+
+  /// Gap between highlight tiles, both horizontally and vertically.
+  static const double aboutHighlightGap = spaceMD;
+
+  /// Below this tile width the 2-up grid collapses to a single column.
+  static const double aboutHighlightMinTileWidth = 210;
+
+  static const double aboutHighlightIconBoxSize = 40;
+  static const double aboutHighlightIconSize = 18;
+  static const double aboutHighlightTitleFontSize = 15;
+  static const double aboutHighlightBodyFontSize = 13;
+
+  // ===========================
+  // About Stats
+  // ===========================
+
+  static const double aboutStatGap = spaceLG;
+  static const double aboutStatValueFontSize = 30;
+  static const double aboutStatLabelFontSize = 13;
+
+  /// Height of the thin vertical rule between two stats.
+  static const double aboutStatDividerHeight = 40;
+
+  // ===========================
   // Social Icons
   // ===========================
 

@@ -55,6 +55,19 @@ class AppTextStyle {
     fontWeight: FontWeight.w500,
   );
 
+  // Monospace — used by the about-section code window so the faux snippet
+  // aligns column-by-column like a real editor.
+  static TextStyle code = GoogleFonts.jetBrainsMono(
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+    height: 1.6,
+  );
+
+  /// Emoji glyphs must not be forced into a Latin-only family, otherwise they
+  /// fall back to a tofu box. Leaving [fontFamily] null lets the platform pick
+  /// its color emoji font.
+  static const TextStyle emoji = TextStyle(fontSize: 15, height: 1.2);
+
   //helper functions for color variations
   static TextStyle withColor(TextStyle styel, Color color) {
     return styel.copyWith(color: color);
