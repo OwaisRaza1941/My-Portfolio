@@ -9,6 +9,7 @@ import '../../widgets/background/animated_background.dart';
 import '../../widgets/common/scroll_to_top_button.dart';
 import '../../widgets/hero/desktop/hero_section.dart';
 import '../../widgets/navbar/desktop/desktop_navbar.dart';
+import '../../widgets/services/desktop/services_section.dart';
 import '../../widgets/skills/desktop/skills_section.dart';
 
 /// The desktop home screen: a fixed transparent navbar over a premium animated
@@ -100,6 +101,8 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
                                     onViewProjects: () {},
                                     onDownloadCv: _onDownloadCv,
                                   ),
+
+                                  ServicesSection(onContact: _onHireMe),
 
                                   const SkillsSection(),
                                 ],

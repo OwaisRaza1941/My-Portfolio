@@ -180,6 +180,82 @@ class AppDimensions {
   static const double aboutStatDividerHeight = 40;
 
   // ===========================
+  // Services Section (Desktop)
+  // ===========================
+
+  /// Vertical breathing room above and below the whole services section.
+  static const double servicesSectionVerticalPadding = space4XL;
+
+  /// Space between the centered header and the card grid.
+  static const double servicesHeaderBottomGap = space3XL;
+
+  /// Width cap for the centered header block.
+  static const double servicesHeaderMaxWidth = 720;
+
+  /// Gap between service cards, both horizontally and vertically.
+  static const double servicesGridGap = spaceLG;
+
+  /// Below this card width the grid drops one column.
+  static const double servicesMinCardWidth = 320;
+
+  /// Most columns the grid will ever use, whatever the available width.
+  static const int servicesMaxColumns = 3;
+
+  // ===========================
+  // Service Card
+  // ===========================
+
+  static const double serviceCardPadding = spaceXL - 4;
+  static const double serviceCardRadius = radiusXL - 4;
+  static const double serviceCardIconBoxSize = 56;
+  static const double serviceCardIconSize = 26;
+  static const double serviceCardTitleFontSize = 19;
+  static const double serviceCardBodyFontSize = 14;
+
+  /// The faint "01" watermark sitting in the card's top-right corner.
+  static const double serviceCardIndexFontSize = 40;
+
+  /// Space between the icon row and the title.
+  static const double serviceCardIconGap = spaceLG - 4;
+
+  /// Space between the description and the feature list.
+  static const double serviceCardFeatureGap = spaceMD + spaceXS;
+
+  /// Vertical rhythm between two feature rows.
+  static const double serviceFeatureRowGap = spaceSM + 2;
+
+  static const double serviceFeatureFontSize = 13;
+  static const double serviceFeatureIconSize = 15;
+  static const double serviceFeatureIconGap = spaceSM + 2;
+
+  /// How far a hovered card lifts off the page.
+  static const double serviceCardHoverLift = 8;
+
+  /// Thickness of the accent rail that sweeps across the card top on hover.
+  static const double serviceCardAccentBarHeight = 3;
+
+  // ===========================
+  // Services Call To Action
+  // ===========================
+
+  /// Space between the card grid and the closing CTA panel.
+  static const double servicesCtaTopGap = space3XL;
+
+  static const double servicesCtaPadding = space2XL - 8;
+
+  static const double servicesCtaRadius = radiusXL;
+
+  static const double servicesCtaTitleFontSize = 24;
+
+  static const double servicesCtaBodyFontSize = 14.5;
+
+  /// Width cap for the CTA copy, so it never runs the full panel width.
+  static const double servicesCtaTextMaxWidth = 560;
+
+  /// Below this panel width the CTA stacks its copy above the button.
+  static const double servicesCtaStackBreakpoint = 720;
+
+  // ===========================
   // Skills Section (Desktop)
   // ===========================
 
@@ -386,6 +462,53 @@ class AppDimensions {
 
   static const double tabletSkillsChipFontSize = 12;
 
+  // ===========================
+  // Tablet Services
+  // ===========================
+
+  /// Same measure as the tablet about and skills columns, so every section
+  /// keeps one edge down the page.
+  static const double tabletServicesMaxWidth = 700;
+
+  static const double tabletServicesSectionVerticalPadding = space3XL;
+
+  static const double tabletServicesHeaderBottomGap = space2XL;
+
+  static const double tabletServicesHeaderMaxWidth = 600;
+
+  static const double tabletServicesGridGap = spaceMD;
+
+  /// Two columns on the tablet measure: 700 minus the page padding and the gap
+  /// leaves ~310 per card, which still holds the feature lines on one line
+  /// each. Three would drop them to ~195 and wrap every deliverable.
+  static const int tabletServicesMaxColumns = 2;
+
+  /// Low enough that the grid keeps two columns down to the compact tablet
+  /// width instead of collapsing early.
+  static const double tabletServicesMinCardWidth = 240;
+
+  static const double tabletServicesCardPadding = spaceLG;
+
+  static const double tabletServicesCardTitleFontSize = 17;
+
+  static const double tabletServicesCardBodyFontSize = 13.5;
+
+  static const double tabletServicesFeatureFontSize = 12.5;
+
+  static const double tabletServicesCardIconBoxSize = 48;
+
+  static const double tabletServicesCardIconSize = 22;
+
+  static const double tabletServicesCardIndexFontSize = 32;
+
+  static const double tabletServicesCtaTopGap = space2XL;
+
+  static const double tabletServicesCtaPadding = spaceXL;
+
+  static const double tabletServicesCtaTitleFontSize = 21;
+
+  static const double tabletServicesCtaBodyFontSize = 13.5;
+
   // Mobile Hero
   static const double mobileProfileImageSize = 220;
 
@@ -556,6 +679,49 @@ class AppDimensions {
   static const double mobileSkillsCardIconBoxSize = 40;
 
   static const double mobileSkillsCardIconSize = 19;
+
+  // ===========================
+  // Mobile Services
+  // ===========================
+
+  /// Matches [mobileSkillsMaxWidth] so the hero, about, skills and services
+  /// columns all share one edge down the page.
+  static const double mobileServicesMaxWidth = 500;
+
+  static const double mobileServicesHorizontalPadding = 15;
+
+  static const double mobileServicesSectionVerticalPadding = space2XL;
+
+  static const double mobileServicesHeaderBottomGap = spaceXL;
+
+  static const double mobileServicesGridGap = spaceMD;
+
+  /// Phones get one card per row — a second column would leave the longest
+  /// deliverables ("Android & iOS from one codebase") wrapping to three lines.
+  static const int mobileServicesMaxColumns = 1;
+
+  static const double mobileServicesCardPadding = spaceMD + spaceXS;
+
+  static const double mobileServicesCardTitleFontSize = 16;
+
+  static const double mobileServicesCardBodyFontSize = 13;
+
+  static const double mobileServicesFeatureFontSize = 12;
+
+  /// The card glyph square steps down with the type scale around it.
+  static const double mobileServicesCardIconBoxSize = 44;
+
+  static const double mobileServicesCardIconSize = 20;
+
+  static const double mobileServicesCardIndexFontSize = 28;
+
+  static const double mobileServicesCtaTopGap = spaceXL;
+
+  static const double mobileServicesCtaPadding = spaceLG;
+
+  static const double mobileServicesCtaTitleFontSize = 19;
+
+  static const double mobileServicesCtaBodyFontSize = 13;
 
   // ===========================
   // Scroll To Top Button

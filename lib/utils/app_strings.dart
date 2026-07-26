@@ -127,6 +127,92 @@ class AppStrings {
   static const String aboutViewProjects = 'View Projects';
 
   // ===========================
+  // Services — Header
+  // ===========================
+
+  static const String servicesBadgeEmoji = '🛠️';
+  static const String servicesBadge = 'What I Do';
+  static const String servicesTitle = 'Services I Offer';
+  static const String servicesSubtitle =
+      'End-to-end Flutter development — from a Figma file to a signed build '
+      'on the Play Store, backed by clean architecture and a real design '
+      'system.';
+
+  // ===========================
+  // Services — Cards
+  // ===========================
+
+  static const String serviceMobileTitle = 'Mobile Apps';
+  static const String serviceMobileBody =
+      'Android and iOS apps built with Flutter — modern UI, Firebase behind '
+      'it, and performance tuned for real devices.';
+  static const List<String> serviceMobileFeatures = [
+    'Android & iOS from one codebase',
+    'Firebase-backed features',
+    'Play Store & App Store release',
+  ];
+
+  static const String serviceWebTitle = 'Responsive Websites';
+  static const String serviceWebBody =
+      'Fast, responsive websites that hold their layout on every screen, '
+      'from a 320pt phone to an ultra-wide monitor.';
+  static const List<String> serviceWebFeatures = [
+    'Mobile-first responsive layouts',
+    'Flutter Web & hosting setup',
+    'Fast loads and smooth scrolling',
+  ];
+
+  static const String serviceCrossPlatformTitle = 'Cross-Platform Apps';
+  static const String serviceCrossPlatformBody =
+      'One codebase shipped to Android, iOS, Web, Windows, macOS and Linux — '
+      'with platform-aware behaviour where it matters.';
+  static const List<String> serviceCrossPlatformFeatures = [
+    'Single shared codebase',
+    'Adaptive, platform-aware UI',
+    'Lower cost, faster delivery',
+  ];
+
+  static const String serviceUiUxTitle = 'UI/UX Development';
+  static const String serviceUiUxBody =
+      'Pixel-perfect Flutter interfaces rebuilt straight from your Figma '
+      'file, down to the spacing and the motion.';
+  static const List<String> serviceUiUxFeatures = [
+    'Figma to Flutter, faithfully',
+    'Reusable widgets & design system',
+    'Smooth, purposeful animations',
+  ];
+
+  static const String serviceFirebaseTitle = 'Firebase Integration';
+  static const String serviceFirebaseBody =
+      'Authentication, Firestore, notifications, storage and analytics wired '
+      'end to end with sensible security rules.';
+  static const List<String> serviceFirebaseFeatures = [
+    'Auth, Firestore & Realtime DB',
+    'Push notifications & Storage',
+    'Analytics, Crashlytics & rules',
+  ];
+
+  static const String serviceApiTitle = 'API Integration';
+  static const String serviceApiBody =
+      'REST API integration on a secure, scalable service layer that stays '
+      'easy to extend as the backend grows.';
+  static const List<String> serviceApiFeatures = [
+    'REST endpoints & JSON parsing',
+    'Secure token & session handling',
+    'Clean, testable service layer',
+  ];
+
+  // ===========================
+  // Services — Call To Action
+  // ===========================
+
+  static const String servicesCtaTitle = 'Have a project in mind?';
+  static const String servicesCtaBody =
+      "Tell me what you're building and I'll come back with a plan, a "
+      'timeline, and an honest estimate.';
+  static const String servicesCtaAction = "Let's Work Together";
+
+  // ===========================
   // Skills — Header
   // ===========================
 
