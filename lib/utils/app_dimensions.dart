@@ -556,4 +556,29 @@ class AppDimensions {
   static const double mobileSkillsCardIconBoxSize = 40;
 
   static const double mobileSkillsCardIconSize = 19;
+
+  // ===========================
+  // Scroll To Top Button
+  // ===========================
+
+  /// Diameter of the floating "back to top" button, per breakpoint.
+  static const double scrollTopButtonSize = 52;
+  static const double tabletScrollTopButtonSize = 48;
+  static const double mobileScrollTopButtonSize = 44;
+
+  /// Arrow glyph size inside the button.
+  static const double scrollTopIconSize = 24;
+  static const double tabletScrollTopIconSize = 22;
+  static const double mobileScrollTopIconSize = 20;
+
+  /// Inset from the bottom-right corner of the viewport.
+  static const double scrollTopButtonInset = space2XL;
+  static const double tabletScrollTopButtonInset = spaceXL;
+  static const double mobileScrollTopButtonInset = spaceLG;
+
+  /// How far the page must be scrolled before the button fades in.
+  static const double scrollTopRevealOffset = 320;
+
+  /// How far the button lifts off the page while hovered.
+  static const double scrollTopHoverLift = 3;
 }

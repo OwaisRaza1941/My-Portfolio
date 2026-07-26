@@ -5,6 +5,7 @@ import 'package:portfolio/utils/app_dimensions.dart';
 import 'package:portfolio/utils/app_strings.dart';
 import 'package:portfolio/widgets/about/mobile/mobile_about_section.dart';
 import 'package:portfolio/widgets/background/animated_background.dart';
+import 'package:portfolio/widgets/common/scroll_to_top_button.dart';
 import 'package:portfolio/widgets/hero/mobile/mobile_hero_section.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_drawer.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_navbar.dart';
@@ -23,6 +24,16 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
 
   /// Mirrors the drawer state so the nav bar can morph its icon into a cross.
   bool _isDrawerOpen = false;
+
+  /// Drives the page scroll view so the floating "back to top" button can
+  /// watch the offset and animate back to the hero.
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   /// Opens [url] in a new tab, silently ignoring failures (e.g. placeholder
   /// links that aren't wired up yet).
@@ -83,6 +94,7 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       return SingleChildScrollView(
+                        controller: _scrollController,
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
                             minHeight: constraints.maxHeight,
@@ -118,6 +130,12 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
                 ),
               ],
             ),
+          ),
+          ScrollToTopButton(
+            controller: _scrollController,
+            size: AppDimensions.mobileScrollTopButtonSize,
+            iconSize: AppDimensions.mobileScrollTopIconSize,
+            inset: AppDimensions.mobileScrollTopButtonInset,
           ),
         ],
       ),

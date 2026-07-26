@@ -6,6 +6,7 @@ import '../../utils/app_color.dart';
 import '../../utils/app_dimensions.dart';
 import '../../utils/app_strings.dart';
 import '../../widgets/background/animated_background.dart';
+import '../../widgets/common/scroll_to_top_button.dart';
 import '../../widgets/hero/desktop/hero_section.dart';
 import '../../widgets/navbar/desktop/desktop_navbar.dart';
 import '../../widgets/skills/desktop/skills_section.dart';
@@ -15,8 +16,23 @@ import '../../widgets/skills/desktop/skills_section.dart';
 ///
 /// It owns the page-level actions (opening links, contacting, downloading the
 /// CV) and passes them down to the presentational section widgets.
-class DesktopHomeScreen extends StatelessWidget {
+class DesktopHomeScreen extends StatefulWidget {
   const DesktopHomeScreen({super.key});
+
+  @override
+  State<DesktopHomeScreen> createState() => _DesktopHomeScreenState();
+}
+
+class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
+  /// Drives the page scroll view so the floating "back to top" button can
+  /// watch the offset and animate back to the hero.
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   /// Opens [url] in a new tab, silently ignoring failures (e.g. placeholder
   /// links that aren't wired up yet).
@@ -59,6 +75,7 @@ class DesktopHomeScreen extends StatelessWidget {
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       return SingleChildScrollView(
+                        controller: _scrollController,
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
                             minHeight: constraints.maxHeight,
@@ -97,6 +114,7 @@ class DesktopHomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          ScrollToTopButton(controller: _scrollController),
         ],
       ),
     );
