@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/models/contact_message.dart';
 import 'package:portfolio/models/nav_item.dart';
 import 'package:portfolio/utils/app_color.dart';
 import 'package:portfolio/utils/app_dimensions.dart';
@@ -6,6 +7,7 @@ import 'package:portfolio/utils/app_strings.dart';
 import 'package:portfolio/widgets/about/mobile/mobile_about_section.dart';
 import 'package:portfolio/widgets/background/animated_background.dart';
 import 'package:portfolio/widgets/common/scroll_to_top_button.dart';
+import 'package:portfolio/widgets/contact/mobile/mobile_contact_section.dart';
 import 'package:portfolio/widgets/hero/mobile/mobile_hero_section.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_drawer.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_navbar.dart';
@@ -52,6 +54,19 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
   void _onDownloadCv() {
     // Wire this to the real CV asset/URL when available.
     _openUrl(AppStrings.downloadCvUrl);
+  }
+
+  /// Hands the contact form's message to the visitor's mail client, pre-filled.
+  ///
+  /// The address is encoded by hand rather than through [Uri.queryParameters],
+  /// which would turn every space into a "+" and leave them literal in the body.
+  void _onSendMessage(ContactMessage message) {
+    final body = '${message.body}\n\n— ${message.name} (${message.email})';
+    final query =
+        'subject=${Uri.encodeComponent(message.subject)}'
+        '&body=${Uri.encodeComponent(body)}';
+
+    _openUrl('${AppStrings.emailUrl}?$query');
   }
 
   void _onNavItemTap(NavItem item) {
@@ -128,6 +143,10 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
                                     onOpenUrl: _openUrl,
                                     onBrowseAll: () =>
                                         _openUrl(AppStrings.githubUrl),
+                                  ),
+                                  MobileContactSection(
+                                    onOpenUrl: _openUrl,
+                                    onSendMessage: _onSendMessage,
                                   ),
                                 ],
                               ),

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/about/desktop/about_section.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../models/contact_message.dart';
 import '../../models/nav_item.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_dimensions.dart';
 import '../../utils/app_strings.dart';
 import '../../widgets/background/animated_background.dart';
 import '../../widgets/common/scroll_to_top_button.dart';
+import '../../widgets/contact/desktop/contact_section.dart';
 import '../../widgets/hero/desktop/hero_section.dart';
 import '../../widgets/navbar/desktop/desktop_navbar.dart';
 import '../../widgets/projects/desktop/projects_section.dart';
@@ -47,6 +49,19 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
   void _onDownloadCv() {
     // Wire this to the real CV asset/URL when available.
     _openUrl(AppStrings.downloadCvUrl);
+  }
+
+  /// Hands the contact form's message to the visitor's mail client, pre-filled.
+  ///
+  /// The address is encoded by hand rather than through [Uri.queryParameters],
+  /// which would turn every space into a "+" and leave them literal in the body.
+  void _onSendMessage(ContactMessage message) {
+    final body = '${message.body}\n\n— ${message.name} (${message.email})';
+    final query =
+        'subject=${Uri.encodeComponent(message.subject)}'
+        '&body=${Uri.encodeComponent(body)}';
+
+    _openUrl('${AppStrings.emailUrl}?$query');
   }
 
   void _onNavItemTap(NavItem item) {
@@ -107,6 +122,11 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
                                     onOpenUrl: _openUrl,
                                     onBrowseAll: () =>
                                         _openUrl(AppStrings.githubUrl),
+                                  ),
+
+                                  ContactSection(
+                                    onOpenUrl: _openUrl,
+                                    onSendMessage: _onSendMessage,
                                   ),
                                 ],
                               ),

@@ -337,6 +337,95 @@ class AppDimensions {
   static const double projectsFooterBodyFontSize = 14.5;
 
   // ===========================
+  // Contact Section (Desktop)
+  // ===========================
+
+  /// Vertical breathing room above and below the whole contact section.
+  static const double contactSectionVerticalPadding = space4XL;
+
+  /// Space between the centered header and the two-column body.
+  static const double contactHeaderBottomGap = space3XL;
+
+  /// Width cap for the centered header block.
+  static const double contactHeaderMaxWidth = 720;
+
+  /// Gap between the info column and the form card.
+  static const double contactColumnGap = space3XL;
+
+  /// Below this section width the info column and the form stack instead of
+  /// sitting side by side — the form's two-up name/email row would otherwise
+  /// squeeze under a readable field width.
+  static const double contactStackBreakpoint = 900;
+
+  /// How the horizontal space is split between the info column and the form.
+  static const int contactInfoFlex = 4;
+  static const int contactFormFlex = 5;
+
+  // ===========================
+  // Contact Info Column
+  // ===========================
+
+  static const double contactInfoHeadlineFontSize = 26;
+  static const double contactInfoBodyFontSize = 14.5;
+
+  /// Width cap for the intro paragraph in the info column.
+  static const double contactInfoBodyMaxWidth = 460;
+
+  /// Vertical rhythm between two info tiles.
+  static const double contactInfoTileGap = spaceMD;
+
+  static const double contactInfoTilePadding = spaceMD + spaceXS;
+  static const double contactInfoTileRadius = radiusLG;
+  static const double contactInfoIconBoxSize = 46;
+  static const double contactInfoIconSize = 20;
+  static const double contactInfoLabelFontSize = 12.5;
+  static const double contactInfoValueFontSize = 14.5;
+
+  /// How far a hovered (tappable) info tile lifts off the page.
+  static const double contactInfoTileHoverLift = 4;
+
+  /// Space above the "find me online" block at the bottom of the column.
+  static const double contactSocialsTopGap = spaceXL;
+
+  // ===========================
+  // Contact Form
+  // ===========================
+
+  static const double contactFormPadding = space2XL - 8;
+  static const double contactFormRadius = radiusXL;
+  static const double contactFormTitleFontSize = 22;
+
+  /// Space between the form title and the first field.
+  static const double contactFormTitleGap = spaceLG;
+
+  /// Vertical rhythm between two fields.
+  static const double contactFieldGap = spaceMD + spaceXS;
+
+  /// Gap between the name and email fields when they share a row.
+  static const double contactFieldRowGap = spaceMD;
+
+  /// Below this form width the name and email fields stop sharing a row.
+  static const double contactFieldRowBreakpoint = 460;
+
+  static const double contactFieldRadius = radiusMD;
+  static const double contactFieldLabelFontSize = 13;
+  static const double contactFieldFontSize = 14.5;
+
+  /// Space between a field's label and its input box.
+  static const double contactFieldLabelGap = spaceSM;
+
+  static const double contactFieldHorizontalPadding = spaceMD;
+  static const double contactFieldVerticalPadding = spaceMD - 2;
+
+  /// Lines the message box shows before it starts scrolling.
+  static const int contactMessageLines = 5;
+
+  /// Space between the last field and the send button.
+  static const double contactSendTopGap = spaceLG;
+
+  static const double contactFormNoteFontSize = 12.5;
+
+  // ===========================
   // Skills Section (Desktop)
   // ===========================
 
@@ -395,6 +484,10 @@ class AppDimensions {
   static const double socialIconSize = 44;
   static const double socialIconGlyphSize = 18;
   static const double socialIconSpacing = 14;
+
+  /// Width for image-backed marks (Fiverr). The asset is a ~3.3:1 wordmark, so
+  /// it is sized by width instead of the square glyph size.
+  static const double socialIconImageWidth = 30;
 
   // ===========================
   // Availability Badge
@@ -631,6 +724,39 @@ class AppDimensions {
   static const double tabletProjectsFooterPadding = spaceXL;
   static const double tabletProjectsFooterTitleFontSize = 21;
   static const double tabletProjectsFooterBodyFontSize = 13.5;
+
+  // ===========================
+  // Contact Section (Tablet)
+  // ===========================
+
+  /// Same measure as the tablet services and projects columns, so every section
+  /// keeps one edge down the page.
+  static const double tabletContactMaxWidth = 700;
+
+  static const double tabletContactSectionVerticalPadding = space3XL;
+
+  static const double tabletContactHeaderBottomGap = space2XL;
+
+  static const double tabletContactHeaderMaxWidth = 600;
+
+  /// Gap between the info column and the form card. The tablet measure always
+  /// sits below [contactStackBreakpoint], so the two never share a row.
+  static const double tabletContactColumnGap = space2XL;
+
+  static const double tabletContactInfoHeadlineFontSize = 22;
+  static const double tabletContactInfoBodyFontSize = 13.5;
+  static const double tabletContactInfoTileGap = spaceSM + 2;
+
+  static const double tabletContactInfoTilePadding = spaceMD;
+  static const double tabletContactInfoIconBoxSize = 42;
+  static const double tabletContactInfoIconSize = 19;
+  static const double tabletContactInfoLabelFontSize = 11.5;
+  static const double tabletContactInfoValueFontSize = 13.5;
+
+  static const double tabletContactFormPadding = spaceXL;
+  static const double tabletContactFormTitleFontSize = 20;
+  static const double tabletContactFieldLabelFontSize = 12.5;
+  static const double tabletContactFieldFontSize = 14;
 
   // Mobile Hero
   static const double mobileProfileImageSize = 220;
@@ -883,6 +1009,44 @@ class AppDimensions {
   static const double mobileProjectsFooterPadding = spaceLG;
   static const double mobileProjectsFooterTitleFontSize = 19;
   static const double mobileProjectsFooterBodyFontSize = 13;
+
+  // ===========================
+  // Contact Section (Mobile)
+  // ===========================
+
+  /// Width cap for the contact column on phones, matching the mobile services
+  /// and projects measure so every section shares one page edge.
+  static const double mobileContactMaxWidth = 500;
+
+  static const double mobileContactHorizontalPadding = 15;
+
+  static const double mobileContactSectionVerticalPadding = space2XL;
+
+  static const double mobileContactHeaderBottomGap = spaceXL;
+
+  /// Gap between the info column and the form card underneath it.
+  static const double mobileContactColumnGap = spaceXL;
+
+  static const double mobileContactInfoHeadlineFontSize = 20;
+  static const double mobileContactInfoBodyFontSize = 13;
+  static const double mobileContactInfoTileGap = spaceSM + 2;
+
+  /// The phone tile keeps its padding but trims the glyph square, which is what
+  /// squeezes the value line ("owais.raza…@gmail.com") on a 360pt screen.
+  static const double mobileContactInfoTilePadding = spaceMD;
+  static const double mobileContactInfoIconBoxSize = 38;
+  static const double mobileContactInfoIconSize = 18;
+  static const double mobileContactInfoLabelFontSize = 11;
+  static const double mobileContactInfoValueFontSize = 13;
+
+  static const double mobileContactFormPadding = spaceLG;
+  static const double mobileContactFormTitleFontSize = 18;
+  static const double mobileContactFieldLabelFontSize = 12;
+  static const double mobileContactFieldFontSize = 13.5;
+
+  /// One line fewer than desktop — the phone message box is already the tallest
+  /// thing in the section.
+  static const int mobileContactMessageLines = 4;
 
   // ===========================
   // Scroll To Top Button

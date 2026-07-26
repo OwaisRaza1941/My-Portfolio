@@ -9,7 +9,7 @@ import '../../../utils/app_strings.dart';
 import '../../common/hover_builder.dart';
 
 /// A horizontal row of social media icon buttons (GitHub, LinkedIn, Instagram,
-/// Email). Each button is a rounded glass square that lifts, brightens toward
+/// Email, Fiverr). Each button is a rounded glass square that lifts, brightens toward
 /// its platform brand color, and glows on hover.
 class SocialIcons extends StatelessWidget {
   const SocialIcons({super.key, required this.onOpen});
@@ -43,6 +43,13 @@ class SocialIcons extends StatelessWidget {
       url: AppStrings.emailUrl,
       brandColor: AppColors.gmail,
     ),
+    // FontAwesome has no Fiverr glyph, so this one rides on a tinted PNG.
+    SocialLink(
+      label: AppStrings.socialFiverr,
+      assetPath: AppStrings.fiverrIconAsset,
+      url: AppStrings.fiverrUrl,
+      brandColor: AppColors.fiver,
+    ),
   ];
 
   @override
@@ -73,6 +80,8 @@ class _SocialIconButton extends StatelessWidget {
     return HoverBuilder(
       onTap: onTap,
       builder: (context, isHovered) {
+        final tint = isHovered ? link.brandColor : AppColors.textSecondary;
+
         return Tooltip(
           message: link.label,
           child: AnimatedContainer(
@@ -102,16 +111,32 @@ class _SocialIconButton extends StatelessWidget {
                     ]
                   : const [],
             ),
-            child: Center(
-              child: FaIcon(
-                link.icon,
-                size: AppDimensions.socialIconGlyphSize,
-                color: isHovered ? link.brandColor : AppColors.textSecondary,
-              ),
-            ),
+            child: Center(child: _mark(tint)),
           ),
         );
       },
+    );
+  }
+
+  /// Renders the platform mark — a FontAwesome glyph, or a tinted PNG for the
+  /// platforms the pack does not cover. The asset is a wide wordmark on a
+  /// square transparent canvas, so width alone sizes and centers it.
+  Widget _mark(Color tint) {
+    final icon = link.icon;
+    if (icon != null) {
+      return FaIcon(
+        icon,
+        size: AppDimensions.socialIconGlyphSize,
+        color: tint,
+      );
+    }
+
+    return Image.asset(
+      link.assetPath!,
+      width: AppDimensions.socialIconImageWidth,
+      color: tint,
+      colorBlendMode: BlendMode.srcIn,
+      filterQuality: FilterQuality.medium,
     );
   }
 }

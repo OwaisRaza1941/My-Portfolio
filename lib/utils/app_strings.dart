@@ -390,6 +390,77 @@ class AppStrings {
   ];
 
   // ===========================
+  // Contact — Header
+  // ===========================
+
+  static const String contactBadgeEmoji = '📬';
+  static const String contactBadge = 'Get In Touch';
+  static const String contactTitle = "Let's Build Something Together";
+  static const String contactSubtitle =
+      'Have a project, a role, or just a question? Send it over and I\'ll get '
+      'back to you with a plan and an honest timeline.';
+
+  // ===========================
+  // Contact — Info Column
+  // ===========================
+
+  static const String contactInfoHeadline = 'Contact Information';
+  static const String contactInfoBody =
+      'The fastest way to reach me is email — the form beside this opens it '
+      'pre-filled, or you can write directly.';
+
+  static const String contactEmailLabel = 'Email';
+  static const String contactEmailValue = 'owaisraza55670@gmail.com';
+
+  static const String contactLocationLabel = 'Location';
+  static const String contactLocationValue = 'Pakistan · Remote Worldwide';
+
+  static const String contactResponseLabel = 'Response Time';
+  static const String contactResponseValue = 'Usually within 24 hours';
+
+  static const String contactFreelanceLabel = 'Freelance';
+  static const String contactFreelanceValue = 'Open to new projects';
+
+  /// Small heading above the social icon row in the info column.
+  static const String contactFollowLabel = 'Find me online';
+
+  // ===========================
+  // Contact — Form
+  // ===========================
+
+  static const String contactFormTitle = 'Send a Message';
+
+  static const String contactNameLabel = 'Your Name';
+  static const String contactNameHint = 'John Carter';
+
+  static const String contactEmailFieldLabel = 'Your Email';
+  static const String contactEmailFieldHint = 'john@company.com';
+
+  static const String contactSubjectLabel = 'Subject';
+  static const String contactSubjectHint = 'Flutter app for my startup';
+
+  static const String contactMessageLabel = 'Message';
+  static const String contactMessageHint =
+      'Tell me about the project — what it does, who it is for, and when you '
+      'need it live.';
+
+  static const String contactSendAction = 'Send Message';
+
+  /// Sits under the send button, so nobody is surprised by the mail client.
+  static const String contactFormNote =
+      'Sending opens your mail app with the message ready to go.';
+
+  // ===========================
+  // Contact — Validation
+  // ===========================
+
+  static const String contactNameError = 'Please enter your name';
+  static const String contactEmailRequiredError = 'Please enter your email';
+  static const String contactEmailInvalidError = 'Enter a valid email address';
+  static const String contactSubjectError = 'Please enter a subject';
+  static const String contactMessageError = 'Please write a short message';
+
+  // ===========================
   // Social (semantic labels / tooltips)
   // ===========================
 
@@ -397,7 +468,7 @@ class AppStrings {
   static const String socialLinkedIn = 'LinkedIn';
   static const String socialInstagram = 'Instagram';
   static const String socialEmail = 'Email';
-  static const String socialFiverr= 'Email';
+  static const String socialFiverr = 'Fiverr';
 
   // ===========================
   // Social URLs (replace with real links)
@@ -408,6 +479,14 @@ class AppStrings {
       'https://www.linkedin.com/in/owais-raza-47273a347/';
   static const String instagramUrl = 'https://www.instagram.com/build_owaisraza';
   static const String emailUrl = 'mailto:owaisraza55670@gmail.com';
+  static const String fiverrUrl = 'https://www.fiverr.com/owaisraza1941';
+
+  // ===========================
+  // Social icon assets (platforms FontAwesome does not ship a glyph for)
+  // ===========================
+
+  /// Transparent single-color wordmark, tinted at render time like the glyphs.
+  static const String fiverrIconAsset = 'assets/images/fiverr.png';
   static const String downloadCvUrl =
-      'https://drive.google.com/file/d/1f4nm_6FXZrh8lm4sIk2-vOCqe2RF6LRq/view?usp=sharing';
+      'https://www.fiverr.com/owaisraza1234/buying?source=avatar_menu_profile';
 }
