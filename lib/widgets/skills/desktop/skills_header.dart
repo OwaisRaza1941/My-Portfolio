@@ -10,18 +10,17 @@ import '../../common/gradient_text.dart';
 import '../../common/heading_underline.dart';
 import '../../common/section_badge.dart';
 
-/// The centered header of the about section: the "👋 ABOUT ME" eyebrow pill, the
-/// gradient "Who I Am & What I Do" heading with an accent underline, and the
-/// supporting one-sentence summary.
+/// The centered header of the skills section: the "⚡ MY SKILLS" eyebrow pill,
+/// the gradient heading with its accent underline, and a one-sentence summary.
 ///
-/// Everything is center-aligned and width-capped so the paragraph wraps into a
-/// balanced block instead of stretching the full content width.
-class AboutHeader extends StatelessWidget {
-  const AboutHeader({
+/// Mirrors the about header exactly, so both sections open with the same gesture
+/// as the page scrolls.
+class SkillsHeader extends StatelessWidget {
+  const SkillsHeader({
     super.key,
     this.titleFontSize = AppDimensions.aboutTitleFontSize,
     this.subtitleFontSize = AppDimensions.aboutSubtitleFontSize,
-    this.maxWidth = AppDimensions.aboutHeaderMaxWidth,
+    this.maxWidth = AppDimensions.skillsHeaderMaxWidth,
   });
 
   /// Typography overrides so smaller layouts can reuse this header verbatim.
@@ -42,8 +41,8 @@ class AboutHeader extends StatelessWidget {
         FadeSlideIn(
           delay: _delay(0),
           child: const SectionBadge(
-            emoji: AppStrings.aboutBadgeEmoji,
-            label: AppStrings.aboutBadge,
+            emoji: AppStrings.skillsBadgeEmoji,
+            label: AppStrings.skillsBadge,
           ),
         ),
         const SizedBox(height: AppDimensions.spaceLG),
@@ -52,7 +51,7 @@ class AboutHeader extends StatelessWidget {
         FadeSlideIn(
           delay: _delay(1),
           child: GradientText(
-            AppStrings.aboutTitle,
+            AppStrings.skillsTitle,
             textAlign: TextAlign.center,
             style: AppTextStyle.h1.copyWith(
               fontSize: titleFontSize,
@@ -63,7 +62,6 @@ class AboutHeader extends StatelessWidget {
         ),
         const SizedBox(height: AppDimensions.spaceMD),
 
-        // Short accent rule, tapering out at both ends.
         FadeSlideIn(delay: _delay(2), child: const HeadingUnderline()),
         const SizedBox(height: AppDimensions.spaceLG),
 
@@ -73,7 +71,7 @@ class AboutHeader extends StatelessWidget {
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),
             child: Text(
-              AppStrings.aboutSubtitle,
+              AppStrings.skillsSubtitle,
               textAlign: TextAlign.center,
               style: AppTextStyle.withColor(
                 AppTextStyle.bodyLarge,

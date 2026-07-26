@@ -180,6 +180,58 @@ class AppDimensions {
   static const double aboutStatDividerHeight = 40;
 
   // ===========================
+  // Skills Section (Desktop)
+  // ===========================
+
+  /// Vertical breathing room above and below the whole skills section.
+  static const double skillsSectionVerticalPadding = space4XL;
+
+  /// Space between the centered header and the card grid.
+  static const double skillsHeaderBottomGap = space3XL;
+
+  /// Width cap for the centered header block.
+  static const double skillsHeaderMaxWidth = 720;
+
+  /// Gap between skill cards, both horizontally and vertically.
+  static const double skillsGridGap = spaceLG;
+
+  /// Below this card width the grid drops one column.
+  static const double skillsMinCardWidth = 300;
+
+  /// Most columns the grid will ever use, whatever the available width.
+  static const int skillsMaxColumns = 3;
+
+  // ===========================
+  // Skills Card
+  // ===========================
+
+  static const double skillsCardPadding = spaceLG;
+  static const double skillsCardRadius = radiusXL - 4;
+  static const double skillsCardIconBoxSize = 46;
+  static const double skillsCardIconSize = 21;
+  static const double skillsCardTitleFontSize = 16.5;
+
+  /// Space between the card header row and the chip cloud.
+  static const double skillsCardHeaderGap = spaceMD + spaceXS;
+
+  /// How far a hovered card lifts off the page.
+  static const double skillsCardHoverLift = 6;
+
+  // ===========================
+  // Skills Chips
+  // ===========================
+
+  static const double skillsChipSpacing = spaceSM;
+  static const double skillsChipRunSpacing = spaceSM + 2;
+  static const double skillsChipHorizontalPadding = spaceMD - 4;
+  static const double skillsChipVerticalPadding = spaceSM - 1;
+  static const double skillsChipFontSize = 12.5;
+
+  /// Diameter of the accent dot that leads each chip label.
+  static const double skillsChipDotSize = 5;
+  static const double skillsChipDotGap = spaceSM;
+
+  // ===========================
   // Social Icons
   // ===========================
 
@@ -304,6 +356,35 @@ class AppDimensions {
   static const double tabletAboutCodePadding = spaceMD + spaceXS;
 
   static const double tabletAboutCodeLineHeight = 22;
+
+  // ===========================
+  // Tablet Skills
+  // ===========================
+
+  /// Same measure as the tablet about column, so both sections share one edge.
+  static const double tabletSkillsMaxWidth = 700;
+
+  static const double tabletSkillsSectionVerticalPadding = space3XL;
+
+  static const double tabletSkillsHeaderBottomGap = space2XL;
+
+  static const double tabletSkillsHeaderMaxWidth = 600;
+
+  static const double tabletSkillsGridGap = spaceMD;
+
+  /// Two columns on the tablet measure: 700 minus the page padding and the gap
+  /// leaves ~310 per card, which still holds the longest chips two per row.
+  static const int tabletSkillsMaxColumns = 2;
+
+  /// Low enough that the grid keeps two columns down to the compact tablet
+  /// width instead of collapsing early.
+  static const double tabletSkillsMinCardWidth = 240;
+
+  static const double tabletSkillsCardPadding = spaceMD + spaceXS;
+
+  static const double tabletSkillsCardTitleFontSize = 15.5;
+
+  static const double tabletSkillsChipFontSize = 12;
 
   // Mobile Hero
   static const double mobileProfileImageSize = 220;
@@ -444,4 +525,35 @@ class AppDimensions {
   static const double mobileAboutCodeGutterWidth = 18;
 
   static const double mobileAboutCodeGutterGap = spaceXS + 2;
+
+  // ===========================
+  // Mobile Skills
+  // ===========================
+
+  /// Matches [mobileAboutMaxWidth] so the hero, about and skills columns all
+  /// share one edge down the page.
+  static const double mobileSkillsMaxWidth = 500;
+
+  static const double mobileSkillsHorizontalPadding = 15;
+
+  static const double mobileSkillsSectionVerticalPadding = space2XL;
+
+  static const double mobileSkillsHeaderBottomGap = spaceXL;
+
+  static const double mobileSkillsGridGap = spaceMD;
+
+  /// Phones get one card per row — two columns would leave the longest chips
+  /// ("Firebase Realtime Database") wrapping onto three lines each.
+  static const int mobileSkillsMaxColumns = 1;
+
+  static const double mobileSkillsCardPadding = spaceMD;
+
+  static const double mobileSkillsCardTitleFontSize = 14.5;
+
+  static const double mobileSkillsChipFontSize = 11.5;
+
+  /// The card glyph square steps down with the type scale around it.
+  static const double mobileSkillsCardIconBoxSize = 40;
+
+  static const double mobileSkillsCardIconSize = 19;
 }

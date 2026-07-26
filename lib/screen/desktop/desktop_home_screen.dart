@@ -8,6 +8,7 @@ import '../../utils/app_strings.dart';
 import '../../widgets/background/animated_background.dart';
 import '../../widgets/hero/desktop/hero_section.dart';
 import '../../widgets/navbar/desktop/desktop_navbar.dart';
+import '../../widgets/skills/desktop/skills_section.dart';
 
 /// The desktop home screen: a fixed transparent navbar over a premium animated
 /// background, with the hero section centered in the remaining viewport.
@@ -82,6 +83,8 @@ class DesktopHomeScreen extends StatelessWidget {
                                     onViewProjects: () {},
                                     onDownloadCv: _onDownloadCv,
                                   ),
+
+                                  const SkillsSection(),
                                 ],
                               ),
                             ),

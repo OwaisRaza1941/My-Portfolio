@@ -8,6 +8,7 @@ import 'package:portfolio/widgets/background/animated_background.dart';
 import 'package:portfolio/widgets/hero/mobile/mobile_hero_section.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_drawer.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_navbar.dart';
+import 'package:portfolio/widgets/skills/mobile/mobile_skills_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MobileHomeScreen extends StatefulWidget {
@@ -105,6 +106,7 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
                                     onViewProjects: () {},
                                     onDownloadCv: _onDownloadCv,
                                   ),
+                                  const MobileSkillsSection(),
                                 ],
                               ),
                             ),

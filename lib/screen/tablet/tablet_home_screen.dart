@@ -8,6 +8,7 @@ import 'package:portfolio/widgets/background/animated_background.dart';
 import 'package:portfolio/widgets/hero/tablet/tablet_hero_section.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_drawer.dart';
 import 'package:portfolio/widgets/navbar/tablet/tablet_navbar.dart';
+import 'package:portfolio/widgets/skills/tablet/tablet_skills_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// The tablet home screen: the desktop composition on the tablet measure, with
@@ -118,6 +119,7 @@ class _TabletHomeScreenState extends State<TabletHomeScreen> {
                                     onViewProjects: () {},
                                     onDownloadCv: _onDownloadCv,
                                   ),
+                                  const TabletSkillsSection(),
                                 ],
                               ),
                             ),

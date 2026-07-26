@@ -127,6 +127,88 @@ class AppStrings {
   static const String aboutViewProjects = 'View Projects';
 
   // ===========================
+  // Skills — Header
+  // ===========================
+
+  static const String skillsBadgeEmoji = '⚡';
+  static const String skillsBadge = 'My Skills';
+  static const String skillsTitle = 'Technologies I Work With';
+  static const String skillsSubtitle =
+      'The tools, frameworks and practices I use every day to design, build '
+      'and ship production-grade Flutter apps.';
+
+  // ===========================
+  // Skills — Categories
+  // ===========================
+
+  static const String skillsLanguagesTitle = 'Languages & Frameworks';
+  static const List<String> skillsLanguages = [
+    'Dart',
+    'Flutter Mobile',
+    'Flutter Web',
+  ];
+
+  static const String skillsMobileTitle = 'Mobile App Development';
+  static const List<String> skillsMobile = [
+    'Android & iOS Development',
+    'Responsive UI Design',
+    'Material Design',
+    'Custom Widgets',
+    'UI/UX Implementation',
+    'Flutter Animations',
+  ];
+
+  static const String skillsStateTitle = 'State Management';
+  static const List<String> skillsState = [
+    'GetX (Advanced)',
+    'Provider (Familiarity)',
+  ];
+
+  static const String skillsDatabaseTitle = 'Database & Storage';
+  static const List<String> skillsDatabase = [
+    'Firebase Firestore',
+    'Firebase Realtime Database',
+    'Firebase Authentication',
+    'Advanced Firebase Features',
+    'SQLite Database',
+    'Local Storage',
+    'Shared Preferences',
+    'File Handling',
+    'Offline Data Persistence',
+  ];
+
+  static const String skillsApiTitle = 'API & Backend Integration';
+  static const List<String> skillsApi = [
+    'REST API Integration',
+    'JSON Parsing',
+    'HTTP Requests',
+  ];
+
+  static const String skillsPerformanceTitle = 'Performance & Optimization';
+  static const List<String> skillsPerformance = [
+    'App Architecture (MVC / MVVM)',
+    'Code Refactoring',
+    'Debugging',
+    'Performance Tuning',
+  ];
+
+  static const String skillsToolsTitle = 'Tools & Platforms';
+  static const List<String> skillsTools = [
+    'Android Studio',
+    'Visual Studio Code',
+    'Git & GitHub',
+    'Emulator & Device Testing',
+  ];
+
+  static const String skillsDeploymentTitle = 'App Store & Play Store Deploy';
+  static const List<String> skillsDeployment = [
+    'Play Store Deployment',
+    'App Store Deployment',
+    'Release Builds & App Signing',
+    'Versioning & Store Listing',
+  ];
+
+  // ===========================
   // Social (semantic labels / tooltips)
   // ===========================
 
@@ -143,7 +225,7 @@ class AppStrings {
   static const String githubUrl = 'https://github.com/OwaisRaza1941';
   static const String linkedInUrl =
       'https://www.linkedin.com/in/owais-raza-47273a347/';
-  static const String instagramUrl = 'https://instagram.com';
+  static const String instagramUrl = 'https://www.instagram.com/build_owaisraza';
   static const String emailUrl = 'mailto:owaisraza55670@gmail.com';
   static const String downloadCvUrl =
       'https://drive.google.com/file/d/1f4nm_6FXZrh8lm4sIk2-vOCqe2RF6LRq/view?usp=sharing';
