@@ -29,6 +29,18 @@ class ProjectShowcase extends StatelessWidget {
     required this.project,
     required this.index,
     required this.onOpenUrl,
+    this.previewWidth = AppDimensions.projectPreviewWidth,
+    this.columnGap = AppDimensions.projectsColumnGap,
+    this.stackBreakpoint = AppDimensions.projectsStackBreakpoint,
+    this.contentMaxWidth = AppDimensions.projectContentMaxWidth,
+    this.alternate = true,
+    this.indexFontSize = AppDimensions.projectIndexFontSize,
+    this.titleFontSize = AppDimensions.projectTitleFontSize,
+    this.bodyFontSize = AppDimensions.projectBodyFontSize,
+    this.featureFontSize = AppDimensions.projectFeatureFontSize,
+    this.chipFontSize = AppDimensions.projectChipFontSize,
+    this.actionButtonHeight = AppDimensions.projectActionButtonHeight,
+    this.actionFontSize = AppDimensions.projectActionFontSize,
   });
 
   final ProjectItem project;
@@ -40,8 +52,27 @@ class ProjectShowcase extends StatelessWidget {
   /// Opens the repository / live build links.
   final ValueChanged<String> onOpenUrl;
 
+  /// Layout overrides so the tablet and mobile sections can reuse this row.
+  final double previewWidth;
+  final double columnGap;
+  final double stackBreakpoint;
+  final double contentMaxWidth;
+
+  /// Whether odd rows mirror the layout. Phones stack every row, where
+  /// mirroring would only shuffle the reading order.
+  final bool alternate;
+
+  /// Typography overrides for the copy column.
+  final double indexFontSize;
+  final double titleFontSize;
+  final double bodyFontSize;
+  final double featureFontSize;
+  final double chipFontSize;
+  final double actionButtonHeight;
+  final double actionFontSize;
+
   /// Odd rows mirror the layout, putting the preview on the right.
-  bool get isReversed => index.isOdd;
+  bool get isReversed => alternate && index.isOdd;
 
   /// The label reads "01", "02", … rather than "1", "2".
   String get _label => (index + 1).toString().padLeft(2, '0');
@@ -53,12 +84,12 @@ class ProjectShowcase extends StatelessWidget {
       builder: (context, isHovered) {
         return LayoutBuilder(
           builder: (context, constraints) {
-            final isStacked =
-                constraints.maxWidth < AppDimensions.projectsStackBreakpoint;
+            final isStacked = constraints.maxWidth < stackBreakpoint;
 
             final preview = ProjectPreview(
               imageAsset: project.imageAsset,
               isHovered: isHovered,
+              width: previewWidth,
             );
 
             final content = _ProjectContent(
@@ -66,6 +97,13 @@ class ProjectShowcase extends StatelessWidget {
               label: _label,
               isHovered: isHovered,
               onOpenUrl: onOpenUrl,
+              indexFontSize: indexFontSize,
+              titleFontSize: titleFontSize,
+              bodyFontSize: bodyFontSize,
+              featureFontSize: featureFontSize,
+              chipFontSize: chipFontSize,
+              actionButtonHeight: actionButtonHeight,
+              actionFontSize: actionFontSize,
             );
 
             if (isStacked) {
@@ -74,7 +112,7 @@ class ProjectShowcase extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(child: preview),
-                  const SizedBox(height: AppDimensions.projectsColumnGap),
+                  SizedBox(height: columnGap),
                   content,
                 ],
               );
@@ -82,7 +120,7 @@ class ProjectShowcase extends StatelessWidget {
 
             final columns = <Widget>[
               preview,
-              const SizedBox(width: AppDimensions.projectsColumnGap),
+              SizedBox(width: columnGap),
               Expanded(
                 child: Align(
                   // The copy hugs the frame rather than drifting to the far
@@ -91,9 +129,7 @@ class ProjectShowcase extends StatelessWidget {
                       ? Alignment.centerRight
                       : Alignment.centerLeft,
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxWidth: AppDimensions.projectContentMaxWidth,
-                    ),
+                    constraints: BoxConstraints(maxWidth: contentMaxWidth),
                     child: content,
                   ),
                 ),
@@ -119,12 +155,27 @@ class _ProjectContent extends StatelessWidget {
     required this.label,
     required this.isHovered,
     required this.onOpenUrl,
+    required this.indexFontSize,
+    required this.titleFontSize,
+    required this.bodyFontSize,
+    required this.featureFontSize,
+    required this.chipFontSize,
+    required this.actionButtonHeight,
+    required this.actionFontSize,
   });
 
   final ProjectItem project;
   final String label;
   final bool isHovered;
   final ValueChanged<String> onOpenUrl;
+
+  final double indexFontSize;
+  final double titleFontSize;
+  final double bodyFontSize;
+  final double featureFontSize;
+  final double chipFontSize;
+  final double actionButtonHeight;
+  final double actionFontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -136,6 +187,7 @@ class _ProjectContent extends StatelessWidget {
           label: label,
           category: project.category,
           isHovered: isHovered,
+          fontSize: indexFontSize,
         ),
         const SizedBox(height: AppDimensions.projectCategoryGap),
 
@@ -143,7 +195,7 @@ class _ProjectContent extends StatelessWidget {
           duration: AppDurations.fast,
           curve: Curves.easeOut,
           style: AppTextStyle.h1.copyWith(
-            fontSize: AppDimensions.projectTitleFontSize,
+            fontSize: titleFontSize,
             fontWeight: FontWeight.w700,
             height: 1.2,
             color: isHovered ? AppColors.accentGlow : AppColors.textPrimary,
@@ -157,10 +209,7 @@ class _ProjectContent extends StatelessWidget {
           style: AppTextStyle.withColor(
             AppTextStyle.bodyMedium,
             AppColors.textTertiary,
-          ).copyWith(
-            fontSize: AppDimensions.projectBodyFontSize,
-            height: 1.7,
-          ),
+          ).copyWith(fontSize: bodyFontSize, height: 1.7),
         ),
         const SizedBox(height: AppDimensions.projectContentGap),
 
@@ -169,7 +218,7 @@ class _ProjectContent extends StatelessWidget {
           ServiceFeatureRow(
             label: project.features[i],
             isCardHovered: isHovered,
-            fontSize: AppDimensions.projectFeatureFontSize,
+            fontSize: featureFontSize,
           ),
         ],
         const SizedBox(height: AppDimensions.projectContentGap),
@@ -182,7 +231,7 @@ class _ProjectContent extends StatelessWidget {
               SkillChip(
                 label: tech,
                 isCardHovered: isHovered,
-                fontSize: AppDimensions.projectChipFontSize,
+                fontSize: chipFontSize,
               ),
           ],
         ),
@@ -195,16 +244,16 @@ class _ProjectContent extends StatelessWidget {
             PrimaryButton(
               label: AppStrings.projectViewCode,
               icon: Icons.code_rounded,
-              height: AppDimensions.projectActionButtonHeight,
-              fontSize: AppDimensions.projectActionFontSize,
+              height: actionButtonHeight,
+              fontSize: actionFontSize,
               onPressed: () => onOpenUrl(project.repoUrl),
             ),
             if (project.liveUrl != null)
               SecondaryButton(
                 label: AppStrings.projectLiveDemo,
                 icon: Icons.open_in_new_rounded,
-                height: AppDimensions.projectActionButtonHeight,
-                fontSize: AppDimensions.projectActionFontSize,
+                height: actionButtonHeight,
+                fontSize: actionFontSize,
                 onPressed: () => onOpenUrl(project.liveUrl!),
               ),
           ],
@@ -221,11 +270,13 @@ class _MetaRow extends StatelessWidget {
     required this.label,
     required this.category,
     required this.isHovered,
+    required this.fontSize,
   });
 
   final String label;
   final String category;
   final bool isHovered;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -240,7 +291,7 @@ class _MetaRow extends StatelessWidget {
             AppTextStyle.labelMedium,
             accent,
           ).copyWith(
-            fontSize: AppDimensions.projectIndexFontSize,
+            fontSize: fontSize,
             fontWeight: FontWeight.w700,
             letterSpacing: 1.5,
           ),
@@ -261,10 +312,7 @@ class _MetaRow extends StatelessWidget {
           style: AppTextStyle.withColor(
             AppTextStyle.labelMedium,
             AppColors.textTertiary,
-          ).copyWith(
-            fontSize: AppDimensions.projectIndexFontSize,
-            letterSpacing: 2.5,
-          ),
+          ).copyWith(fontSize: fontSize, letterSpacing: 2.5),
         ),
       ],
     );

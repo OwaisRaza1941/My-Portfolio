@@ -9,6 +9,7 @@ import 'package:portfolio/widgets/common/scroll_to_top_button.dart';
 import 'package:portfolio/widgets/hero/mobile/mobile_hero_section.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_drawer.dart';
 import 'package:portfolio/widgets/navbar/mobile/mobile_navbar.dart';
+import 'package:portfolio/widgets/projects/mobile/mobile_projects_section.dart';
 import 'package:portfolio/widgets/services/mobile/mobile_services_section.dart';
 import 'package:portfolio/widgets/skills/mobile/mobile_skills_section.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -122,6 +123,11 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
                                   const MobileSkillsSection(),
                                   MobileServicesSection(
                                     onContact: _onHireMe,
+                                  ),
+                                  MobileProjectsSection(
+                                    onOpenUrl: _openUrl,
+                                    onBrowseAll: () =>
+                                        _openUrl(AppStrings.githubUrl),
                                   ),
                                 ],
                               ),

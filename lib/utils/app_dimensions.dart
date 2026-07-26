@@ -590,6 +590,48 @@ class AppDimensions {
 
   static const double tabletServicesCtaBodyFontSize = 13.5;
 
+  // ===========================
+  // Projects Section (Tablet)
+  // ===========================
+
+  /// Width cap for the whole projects column on tablets, matching the services
+  /// measure so both sections share one page edge.
+  static const double tabletProjectsMaxWidth = 700;
+
+  static const double tabletProjectsSectionVerticalPadding = space3XL;
+
+  static const double tabletProjectsHeaderBottomGap = space2XL;
+
+  static const double tabletProjectsHeaderMaxWidth = 600;
+
+  /// Vertical rhythm between two showcase rows.
+  static const double tabletProjectsRowGap = space3XL;
+
+  /// Gap between the screenshot and the copy beside it.
+  static const double tabletProjectsColumnGap = space2XL;
+
+  /// Below this column width the tablet rows stack the screenshot above the
+  /// copy instead of squeezing the paragraph.
+  static const double tabletProjectsStackBreakpoint = 640;
+
+  /// Screenshot width on tablets — a step down from desktop so the copy column
+  /// keeps a readable measure beside it.
+  static const double tabletProjectPreviewWidth = 240;
+
+  static const double tabletProjectIndexFontSize = 12;
+  static const double tabletProjectTitleFontSize = 25;
+  static const double tabletProjectBodyFontSize = 14;
+  static const double tabletProjectFeatureFontSize = 12.5;
+  static const double tabletProjectChipFontSize = 12;
+
+  static const double tabletProjectActionButtonHeight = 44;
+  static const double tabletProjectActionFontSize = 13.5;
+
+  static const double tabletProjectsFooterTopGap = space2XL;
+  static const double tabletProjectsFooterPadding = spaceXL;
+  static const double tabletProjectsFooterTitleFontSize = 21;
+  static const double tabletProjectsFooterBodyFontSize = 13.5;
+
   // Mobile Hero
   static const double mobileProfileImageSize = 220;
 
@@ -803,6 +845,44 @@ class AppDimensions {
   static const double mobileServicesCtaTitleFontSize = 19;
 
   static const double mobileServicesCtaBodyFontSize = 13;
+
+  // ===========================
+  // Projects Section (Mobile)
+  // ===========================
+
+  /// Width cap for the projects column on phones, matching the mobile services
+  /// measure so both sections share one page edge.
+  static const double mobileProjectsMaxWidth = 500;
+
+  static const double mobileProjectsHorizontalPadding = 15;
+
+  static const double mobileProjectsSectionVerticalPadding = space2XL;
+
+  static const double mobileProjectsHeaderBottomGap = spaceXL;
+
+  /// Vertical rhythm between two stacked project cards.
+  static const double mobileProjectsRowGap = space2XL;
+
+  /// Gap between the screenshot and the copy under it.
+  static const double mobileProjectsColumnGap = spaceXL;
+
+  /// Screenshot width on phones. The captures are portrait, so anything wider
+  /// pushes the copy a full screen down the page.
+  static const double mobileProjectPreviewWidth = 210;
+
+  static const double mobileProjectIndexFontSize = 11.5;
+  static const double mobileProjectTitleFontSize = 22;
+  static const double mobileProjectBodyFontSize = 13.5;
+  static const double mobileProjectFeatureFontSize = 12;
+  static const double mobileProjectChipFontSize = 11.5;
+
+  static const double mobileProjectActionButtonHeight = 42;
+  static const double mobileProjectActionFontSize = 13;
+
+  static const double mobileProjectsFooterTopGap = spaceXL;
+  static const double mobileProjectsFooterPadding = spaceLG;
+  static const double mobileProjectsFooterTitleFontSize = 19;
+  static const double mobileProjectsFooterBodyFontSize = 13;
 
   // ===========================
   // Scroll To Top Button
