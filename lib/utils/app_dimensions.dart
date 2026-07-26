@@ -256,6 +256,87 @@ class AppDimensions {
   static const double servicesCtaStackBreakpoint = 720;
 
   // ===========================
+  // Projects Section (Desktop)
+  // ===========================
+
+  /// Vertical breathing room above and below the whole projects section.
+  static const double projectsSectionVerticalPadding = space4XL;
+
+  /// Space between the centered header and the first showcase row.
+  static const double projectsHeaderBottomGap = space3XL;
+
+  /// Width cap for the centered header block.
+  static const double projectsHeaderMaxWidth = 720;
+
+  /// Vertical rhythm between two showcase rows.
+  static const double projectsRowGap = space4XL;
+
+  /// Gap between the device preview and the copy beside it.
+  static const double projectsColumnGap = space3XL;
+
+  /// Below this section width the rows stop alternating and stack the preview
+  /// above the copy — the copy column would otherwise fall under ~320pt.
+  static const double projectsStackBreakpoint = 860;
+
+  // ===========================
+  // Project Preview (device frame)
+  // ===========================
+
+  /// Width of the phone frame. The screenshots are ~860x1825, so this keeps the
+  /// frame around 640pt tall — tall enough to read, short enough that the copy
+  /// beside it still centers naturally.
+  static const double projectPreviewWidth = 292;
+
+  /// Width / height of the framed screenshot, matching the source captures.
+  static const double projectPreviewAspectRatio = 0.475;
+
+  /// Outer radius of the phone frame, and the bezel thickness inside it.
+  static const double projectPreviewFrameRadius = 36;
+  static const double projectPreviewBezel = 10;
+
+  /// Width of the speaker notch drawn across the top of the frame.
+  static const double projectPreviewNotchWidth = 92;
+  static const double projectPreviewNotchHeight = 20;
+
+  /// How far a hovered preview lifts off the page.
+  static const double projectPreviewHoverLift = 10;
+
+  // ===========================
+  // Project Content Column
+  // ===========================
+
+  /// Width cap for the copy beside the preview, so the paragraph keeps a
+  /// comfortable measure on ultra-wide monitors.
+  static const double projectContentMaxWidth = 560;
+
+  static const double projectIndexFontSize = 13;
+  static const double projectTitleFontSize = 30;
+  static const double projectBodyFontSize = 15;
+  static const double projectFeatureFontSize = 13.5;
+  static const double projectChipFontSize = 12.5;
+
+  /// Space between the category pill row and the project title.
+  static const double projectCategoryGap = spaceMD;
+
+  /// Space between blocks inside the copy column.
+  static const double projectContentGap = spaceLG;
+
+  /// Gap between the two action buttons.
+  static const double projectActionGap = spaceMD;
+
+  /// Height of the action buttons on a showcase row — a notch under the hero
+  /// scale, since these repeat four times down the page.
+  static const double projectActionButtonHeight = 46;
+  static const double projectActionFontSize = 14.5;
+
+  /// Space between the last showcase row and the closing GitHub panel.
+  static const double projectsFooterTopGap = space3XL;
+
+  static const double projectsFooterPadding = space2XL - 8;
+  static const double projectsFooterTitleFontSize = 24;
+  static const double projectsFooterBodyFontSize = 14.5;
+
+  // ===========================
   // Skills Section (Desktop)
   // ===========================
 

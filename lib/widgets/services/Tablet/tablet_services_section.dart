@@ -29,7 +29,7 @@ import '../desktop/services_section.dart';
 /// checklist readable while the grid still reads as a grid.
 ///
 /// Purely presentational, like the desktop section — the service list stays in
-/// [ServicesSection] and the contact action comes down from the owning screen.
+// / [ServicesSection] and the contact action comes down from the owning screen.
 class TabletServicesSection extends StatelessWidget {
   const TabletServicesSection({super.key, required this.onContact});
 

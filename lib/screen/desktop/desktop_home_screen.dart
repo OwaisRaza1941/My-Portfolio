@@ -9,14 +9,11 @@ import '../../widgets/background/animated_background.dart';
 import '../../widgets/common/scroll_to_top_button.dart';
 import '../../widgets/hero/desktop/hero_section.dart';
 import '../../widgets/navbar/desktop/desktop_navbar.dart';
+import '../../widgets/projects/desktop/projects_section.dart';
 import '../../widgets/services/desktop/services_section.dart';
 import '../../widgets/skills/desktop/skills_section.dart';
 
-/// The desktop home screen: a fixed transparent navbar over a premium animated
-/// background, with the hero section centered in the remaining viewport.
-///
-/// It owns the page-level actions (opening links, contacting, downloading the
-/// CV) and passes them down to the presentational section widgets.
+/// Desktop Screen Layout
 class DesktopHomeScreen extends StatefulWidget {
   const DesktopHomeScreen({super.key});
 
@@ -105,6 +102,12 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
                                   ServicesSection(onContact: _onHireMe),
 
                                   const SkillsSection(),
+
+                                  ProjectsSection(
+                                    onOpenUrl: _openUrl,
+                                    onBrowseAll: () =>
+                                        _openUrl(AppStrings.githubUrl),
+                                  ),
                                 ],
                               ),
                             ),
