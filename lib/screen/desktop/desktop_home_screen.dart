@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/about/desktop/about_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/contact_message.dart';
-import '../../models/nav_item.dart';
 import '../../utils/app_color.dart';
 import '../../utils/app_dimensions.dart';
 import '../../utils/app_strings.dart';
+import '../../utils/section_navigation.dart';
 import '../../widgets/background/animated_background.dart';
 import '../../widgets/common/scroll_to_top_button.dart';
 import '../../widgets/contact/desktop/contact_section.dart';
@@ -23,17 +23,8 @@ class DesktopHomeScreen extends StatefulWidget {
   State<DesktopHomeScreen> createState() => _DesktopHomeScreenState();
 }
 
-class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
-  /// Drives the page scroll view so the floating "back to top" button can
-  /// watch the offset and animate back to the hero.
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
+class _DesktopHomeScreenState extends State<DesktopHomeScreen>
+    with SectionNavigation {
   /// Opens [url] in a new tab, silently ignoring failures (e.g. placeholder
   /// links that aren't wired up yet).
   Future<void> _openUrl(String url) async {
@@ -64,10 +55,6 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
     _openUrl('${AppStrings.emailUrl}?$query');
   }
 
-  void _onNavItemTap(NavItem item) {
-    // Section scrolling will be wired up as more sections are added.
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,16 +66,16 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
             child: Column(
               children: [
                 DesktopNavbar(
-                  activeAnchor: 'home',
-                  onNavItemTap: _onNavItemTap,
+                  activeAnchor: activeAnchor,
+                  onNavItemTap: onNavItemTap,
                   onHireMe: _onHireMe,
-                  onLogoTap: () {},
+                  onLogoTap: () => scrollToAnchor(SectionNavigation.homeAnchor),
                 ),
                 Expanded(
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       return SingleChildScrollView(
-                        controller: _scrollController,
+                        controller: scrollController,
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
                             minHeight: constraints.maxHeight,
@@ -100,33 +87,49 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
                             child: Center(
                               child: Column(
                                 children: [
-                                  HeroSection(
-                                    onHireMe: _onHireMe,
-                                    onDownloadCv: _onDownloadCv,
-                                    onOpenSocial: _openUrl,
-                                    profileImage: AssetImage(
-                                      'assets/images/owais_profile.png',
+                                  section(
+                                    'home',
+                                    HeroSection(
+                                      onHireMe: _onHireMe,
+                                      onDownloadCv: _onDownloadCv,
+                                      onOpenSocial: _openUrl,
+                                      profileImage: const AssetImage(
+                                        'assets/images/owais_profile.png',
+                                      ),
                                     ),
                                   ),
 
-                                  AboutSection(
-                                    onViewProjects: () {},
-                                    onDownloadCv: _onDownloadCv,
+                                  section(
+                                    'about',
+                                    AboutSection(
+                                      onViewProjects: () =>
+                                          scrollToAnchor('projects'),
+                                      onDownloadCv: _onDownloadCv,
+                                    ),
                                   ),
 
-                                  ServicesSection(onContact: _onHireMe),
-
-                                  const SkillsSection(),
-
-                                  ProjectsSection(
-                                    onOpenUrl: _openUrl,
-                                    onBrowseAll: () =>
-                                        _openUrl(AppStrings.githubUrl),
+                                  section(
+                                    'services',
+                                    ServicesSection(onContact: _onHireMe),
                                   ),
 
-                                  ContactSection(
-                                    onOpenUrl: _openUrl,
-                                    onSendMessage: _onSendMessage,
+                                  section('skills', const SkillsSection()),
+
+                                  section(
+                                    'projects',
+                                    ProjectsSection(
+                                      onOpenUrl: _openUrl,
+                                      onBrowseAll: () =>
+                                          _openUrl(AppStrings.githubUrl),
+                                    ),
+                                  ),
+
+                                  section(
+                                    'contact',
+                                    ContactSection(
+                                      onOpenUrl: _openUrl,
+                                      onSendMessage: _onSendMessage,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -140,7 +143,7 @@ class _DesktopHomeScreenState extends State<DesktopHomeScreen> {
               ],
             ),
           ),
-          ScrollToTopButton(controller: _scrollController),
+          ScrollToTopButton(controller: scrollController),
         ],
       ),
     );

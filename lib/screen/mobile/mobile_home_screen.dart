@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/models/contact_message.dart';
-import 'package:portfolio/models/nav_item.dart';
 import 'package:portfolio/utils/app_color.dart';
 import 'package:portfolio/utils/app_dimensions.dart';
 import 'package:portfolio/utils/app_strings.dart';
+import 'package:portfolio/utils/section_navigation.dart';
 import 'package:portfolio/widgets/about/mobile/mobile_about_section.dart';
 import 'package:portfolio/widgets/background/animated_background.dart';
 import 'package:portfolio/widgets/common/scroll_to_top_button.dart';
@@ -23,21 +23,12 @@ class MobileHomeScreen extends StatefulWidget {
   State<MobileHomeScreen> createState() => _MobileHomeScreenState();
 }
 
-class _MobileHomeScreenState extends State<MobileHomeScreen> {
+class _MobileHomeScreenState extends State<MobileHomeScreen>
+    with SectionNavigation {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   /// Mirrors the drawer state so the nav bar can morph its icon into a cross.
   bool _isDrawerOpen = false;
-
-  /// Drives the page scroll view so the floating "back to top" button can
-  /// watch the offset and animate back to the hero.
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
 
   /// Opens [url] in a new tab, silently ignoring failures (e.g. placeholder
   /// links that aren't wired up yet).
@@ -69,10 +60,6 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
     _openUrl('${AppStrings.emailUrl}?$query');
   }
 
-  void _onNavItemTap(NavItem item) {
-    // Section scrolling will be wired up as more sections are added.
-  }
-
   /// Opens or closes the end drawer from the nav bar toggle.
   void _toggleDrawer() {
     final scaffold = _scaffoldKey.currentState;
@@ -91,8 +78,8 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
       drawerScrimColor: AppColors.scaffoldBackground.withValues(alpha: 0.7),
       onEndDrawerChanged: (isOpen) => setState(() => _isDrawerOpen = isOpen),
       endDrawer: MobileDrawer(
-        activeAnchor: 'home',
-        onNavItemTap: _onNavItemTap,
+        activeAnchor: activeAnchor,
+        onNavItemTap: onNavItemTap,
         onHireMe: _onHireMe,
         onOpenSocial: _openUrl,
       ),
@@ -105,13 +92,13 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
                 MobileNavbar(
                   isDrawerOpen: _isDrawerOpen,
                   onMenuTap: _toggleDrawer,
-                  onLogoTap: () {},
+                  onLogoTap: () => scrollToAnchor(SectionNavigation.homeAnchor),
                 ),
                 Expanded(
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       return SingleChildScrollView(
-                        controller: _scrollController,
+                        controller: scrollController,
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
                             minHeight: constraints.maxHeight,
@@ -123,30 +110,49 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
                             child: Center(
                               child: Column(
                                 children: [
-                                  MobileHeroSection(
-                                    onHireMe: _onHireMe,
-                                    onDownloadCv: _onDownloadCv,
-                                    onOpenSocial: _openUrl,
-                                    profileImage: const AssetImage(
-                                      'assets/images/owais_profile.png',
+                                  section(
+                                    'home',
+                                    MobileHeroSection(
+                                      onHireMe: _onHireMe,
+                                      onDownloadCv: _onDownloadCv,
+                                      onOpenSocial: _openUrl,
+                                      profileImage: const AssetImage(
+                                        'assets/images/owais_profile.png',
+                                      ),
                                     ),
                                   ),
-                                  MobileAboutSection(
-                                    onViewProjects: () {},
-                                    onDownloadCv: _onDownloadCv,
+                                  section(
+                                    'about',
+                                    MobileAboutSection(
+                                      onViewProjects: () =>
+                                          scrollToAnchor('projects'),
+                                      onDownloadCv: _onDownloadCv,
+                                    ),
                                   ),
-                                  const MobileSkillsSection(),
-                                  MobileServicesSection(
-                                    onContact: _onHireMe,
+                                  section(
+                                    'skills',
+                                    const MobileSkillsSection(),
                                   ),
-                                  MobileProjectsSection(
-                                    onOpenUrl: _openUrl,
-                                    onBrowseAll: () =>
-                                        _openUrl(AppStrings.githubUrl),
+                                  section(
+                                    'services',
+                                    MobileServicesSection(
+                                      onContact: _onHireMe,
+                                    ),
                                   ),
-                                  MobileContactSection(
-                                    onOpenUrl: _openUrl,
-                                    onSendMessage: _onSendMessage,
+                                  section(
+                                    'projects',
+                                    MobileProjectsSection(
+                                      onOpenUrl: _openUrl,
+                                      onBrowseAll: () =>
+                                          _openUrl(AppStrings.githubUrl),
+                                    ),
+                                  ),
+                                  section(
+                                    'contact',
+                                    MobileContactSection(
+                                      onOpenUrl: _openUrl,
+                                      onSendMessage: _onSendMessage,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -161,7 +167,7 @@ class _MobileHomeScreenState extends State<MobileHomeScreen> {
             ),
           ),
           ScrollToTopButton(
-            controller: _scrollController,
+            controller: scrollController,
             size: AppDimensions.mobileScrollTopButtonSize,
             iconSize: AppDimensions.mobileScrollTopIconSize,
             inset: AppDimensions.mobileScrollTopButtonInset,

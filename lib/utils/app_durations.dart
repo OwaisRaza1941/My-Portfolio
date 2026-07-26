@@ -14,6 +14,9 @@ class AppDurations {
   /// Base delay unit used to stagger entrance animations.
   static const Duration stagger = Duration(milliseconds: 120);
 
+  /// Glide from one section to the next when a nav item is tapped.
+  static const Duration sectionScroll = Duration(milliseconds: 650);
+
   /// One full cycle of the floating profile image.
   static const Duration profileFloat = Duration(seconds: 4);
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/models/contact_message.dart';
-import 'package:portfolio/models/nav_item.dart';
 import 'package:portfolio/utils/app_color.dart';
 import 'package:portfolio/utils/app_dimensions.dart';
 import 'package:portfolio/utils/app_strings.dart';
+import 'package:portfolio/utils/section_navigation.dart';
 import 'package:portfolio/widgets/about/Tablet/tablet_about_section.dart';
 import 'package:portfolio/widgets/background/animated_background.dart';
 import 'package:portfolio/widgets/common/scroll_to_top_button.dart';
@@ -26,21 +26,12 @@ class TabletHomeScreen extends StatefulWidget {
   State<TabletHomeScreen> createState() => _TabletHomeScreenState();
 }
 
-class _TabletHomeScreenState extends State<TabletHomeScreen> {
+class _TabletHomeScreenState extends State<TabletHomeScreen>
+    with SectionNavigation {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   /// Mirrors the drawer state so the nav bar can morph its icon into a cross.
   bool _isDrawerOpen = false;
-
-  /// Drives the page scroll view so the floating "back to top" button can
-  /// watch the offset and animate back to the hero.
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
 
   /// Opens [url] in a new tab, silently ignoring failures (e.g. placeholder
   /// links that aren't wired up yet).
@@ -72,10 +63,6 @@ class _TabletHomeScreenState extends State<TabletHomeScreen> {
     _openUrl('${AppStrings.emailUrl}?$query');
   }
 
-  void _onNavItemTap(NavItem item) {
-    // Section scrolling will be wired up as more sections are added.
-  }
-
   /// Opens or closes the end drawer from the nav bar toggle.
   void _toggleDrawer() {
     final scaffold = _scaffoldKey.currentState;
@@ -100,8 +87,8 @@ class _TabletHomeScreenState extends State<TabletHomeScreen> {
       onEndDrawerChanged: (isOpen) => setState(() => _isDrawerOpen = isOpen),
       endDrawer: isCompact
           ? MobileDrawer(
-              activeAnchor: 'home',
-              onNavItemTap: _onNavItemTap,
+              activeAnchor: activeAnchor,
+              onNavItemTap: onNavItemTap,
               onHireMe: _onHireMe,
               onOpenSocial: _openUrl,
             )
@@ -113,18 +100,18 @@ class _TabletHomeScreenState extends State<TabletHomeScreen> {
             child: Column(
               children: [
                 TabletNavbar(
-                  activeAnchor: 'home',
+                  activeAnchor: activeAnchor,
                   isDrawerOpen: _isDrawerOpen,
-                  onNavItemTap: _onNavItemTap,
+                  onNavItemTap: onNavItemTap,
                   onHireMe: _onHireMe,
-                  onLogoTap: () {},
+                  onLogoTap: () => scrollToAnchor(SectionNavigation.homeAnchor),
                   onMenuTap: _toggleDrawer,
                 ),
                 Expanded(
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       return SingleChildScrollView(
-                        controller: _scrollController,
+                        controller: scrollController,
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
                             minHeight: constraints.maxHeight,
@@ -136,30 +123,49 @@ class _TabletHomeScreenState extends State<TabletHomeScreen> {
                             child: Center(
                               child: Column(
                                 children: [
-                                  TabletHeroSection(
-                                    onHireMe: _onHireMe,
-                                    onDownloadCv: _onDownloadCv,
-                                    onOpenSocial: _openUrl,
-                                    profileImage: const AssetImage(
-                                      'assets/images/owais_profile.png',
+                                  section(
+                                    'home',
+                                    TabletHeroSection(
+                                      onHireMe: _onHireMe,
+                                      onDownloadCv: _onDownloadCv,
+                                      onOpenSocial: _openUrl,
+                                      profileImage: const AssetImage(
+                                        'assets/images/owais_profile.png',
+                                      ),
                                     ),
                                   ),
-                                  TabletAboutSection(
-                                    onViewProjects: () {},
-                                    onDownloadCv: _onDownloadCv,
+                                  section(
+                                    'about',
+                                    TabletAboutSection(
+                                      onViewProjects: () =>
+                                          scrollToAnchor('projects'),
+                                      onDownloadCv: _onDownloadCv,
+                                    ),
                                   ),
-                                  const TabletSkillsSection(),
-                                  TabletServicesSection(
-                                    onContact: _onHireMe,
+                                  section(
+                                    'skills',
+                                    const TabletSkillsSection(),
                                   ),
-                                  TabletProjectsSection(
-                                    onOpenUrl: _openUrl,
-                                    onBrowseAll: () =>
-                                        _openUrl(AppStrings.githubUrl),
+                                  section(
+                                    'services',
+                                    TabletServicesSection(
+                                      onContact: _onHireMe,
+                                    ),
                                   ),
-                                  TabletContactSection(
-                                    onOpenUrl: _openUrl,
-                                    onSendMessage: _onSendMessage,
+                                  section(
+                                    'projects',
+                                    TabletProjectsSection(
+                                      onOpenUrl: _openUrl,
+                                      onBrowseAll: () =>
+                                          _openUrl(AppStrings.githubUrl),
+                                    ),
+                                  ),
+                                  section(
+                                    'contact',
+                                    TabletContactSection(
+                                      onOpenUrl: _openUrl,
+                                      onSendMessage: _onSendMessage,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -174,7 +180,7 @@ class _TabletHomeScreenState extends State<TabletHomeScreen> {
             ),
           ),
           ScrollToTopButton(
-            controller: _scrollController,
+            controller: scrollController,
             size: AppDimensions.tabletScrollTopButtonSize,
             iconSize: AppDimensions.tabletScrollTopIconSize,
             inset: AppDimensions.tabletScrollTopButtonInset,

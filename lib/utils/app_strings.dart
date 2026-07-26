@@ -479,7 +479,7 @@ class AppStrings {
       'https://www.linkedin.com/in/owais-raza-47273a347/';
   static const String instagramUrl = 'https://www.instagram.com/build_owaisraza';
   static const String emailUrl = 'mailto:owaisraza55670@gmail.com';
-  static const String fiverrUrl = 'https://www.fiverr.com/owaisraza1941';
+  static const String fiverrUrl = 'https://www.fiverr.com/owaisraza1234?utm_source=chatgpt.com';
 
   // ===========================
   // Social icon assets (platforms FontAwesome does not ship a glyph for)
