@@ -488,5 +488,5 @@ class AppStrings {
   /// Transparent single-color wordmark, tinted at render time like the glyphs.
   static const String fiverrIconAsset = 'assets/images/fiverr.png';
   static const String downloadCvUrl =
-      'https://www.fiverr.com/owaisraza1234/buying?source=avatar_menu_profile';
+      'https://drive.google.com/file/d/1f4nm_6FXZrh8lm4sIk2-vOCqe2RF6LRq/view?usp=sharing';
 }
