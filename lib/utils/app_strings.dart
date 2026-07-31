@@ -57,8 +57,8 @@ class AppStrings {
   // ===========================
   // About — Header
   // ===========================
-
   static const String aboutBadgeEmoji = '👋';
+  
   static const String aboutBadge = 'About Me';
 
   static const String aboutTitle = 'Building Apps That Users Love';
