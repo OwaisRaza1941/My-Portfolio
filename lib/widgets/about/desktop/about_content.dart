@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../models/about_highlight.dart';
 import '../../../utils/app_color.dart';
 import '../../../utils/app_dimensions.dart';

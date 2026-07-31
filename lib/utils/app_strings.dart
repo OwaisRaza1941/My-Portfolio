@@ -33,20 +33,26 @@ class AppStrings {
   // Hero
   // ===========================
 
-  static const String heroBadge = 'Flutter Developer';
+  static const String heroBadge = 'Available for Freelance';
+
   static const String heroGreeting = "Hi, I'm";
+
   static const String heroRoleLine = 'Flutter Developer';
-  static const String heroHeadline = 'Modern Mobile &\nWeb Developer';
+
+  static const String heroHeadline =
+      'Building Fast, Scalable\nFlutter Applications';
+
   static const String heroDescription =
-      'I craft premium, high-performance mobile and web experiences with '
-      'Flutter — blending clean architecture, elegant UI, and smooth motion '
-      'to turn ideas into production-grade products.';
+      'I help businesses and startups build high-performance mobile and web '
+      'applications using Flutter, Firebase, and Clean Architecture. From UI '
+      'development to backend integration, I create responsive, scalable, and '
+      'production-ready solutions.';
 
   // ===========================
   // Availability
   // ===========================
 
-  static const String availability = 'Available for work';
+  static const String availability = 'Open to Work';
 
   // ===========================
   // About — Header
@@ -54,53 +60,61 @@ class AppStrings {
 
   static const String aboutBadgeEmoji = '👋';
   static const String aboutBadge = 'About Me';
-  static const String aboutTitle = 'Who I Am & What I Do';
+
+  static const String aboutTitle = 'Building Apps That Users Love';
+
   static const String aboutSubtitle =
-      'A passionate Flutter Developer focused on building modern, scalable '
-      'and high-performance applications.';
+      'Flutter Developer specializing in modern, scalable, and '
+      'high-performance mobile & web applications.';
 
   // ===========================
   // About — Right Column
   // ===========================
 
   static const String aboutHeadline =
-      'Turning ideas into polished,\nproduction-ready products';
+      'Helping businesses turn ideas\ninto successful digital products';
 
   static const String aboutParagraphOne =
-      "I'm Owais Raza, a Flutter developer who cares as much about how a "
-      'product is built as how it looks. I design and ship cross-platform '
-      'apps for mobile and web from a single, well-structured codebase.';
+      'I am Owais Raza, a Flutter Developer passionate about building '
+      'high-quality mobile and web applications. I help startups, businesses, '
+      'and individuals transform their ideas into fast, responsive, and '
+      'production-ready apps using Flutter and Firebase.';
 
   static const String aboutParagraphTwo =
-      'My work leans on clean architecture, reusable widgets, and a strict '
-      'design system — so features stay easy to extend, the UI stays '
-      'consistent, and the app stays fast as it grows.';
+      'My focus is writing clean, maintainable code with modern architecture, '
+      'responsive UI, and scalable solutions. Whether it is a new product, '
+      'feature development, or app improvement, I build applications that are '
+      'easy to maintain and ready for future growth.';
 
   // ===========================
   // About — Highlights
   // ===========================
 
   static const String aboutHighlightArchitectureTitle = 'Clean Architecture';
+
   static const String aboutHighlightArchitectureBody =
-      'Layered, testable code that scales with the product.';
+      'Scalable and maintainable code for long-term projects.';
 
-  static const String aboutHighlightUiTitle = 'Pixel-Perfect UI';
+  static const String aboutHighlightUiTitle = 'Responsive UI';
+
   static const String aboutHighlightUiBody =
-      'Designs rebuilt faithfully, down to spacing and motion.';
+      'Modern interfaces that work perfectly across all screen sizes.';
 
-  static const String aboutHighlightCrossPlatformTitle = 'Cross-Platform';
+  static const String aboutHighlightCrossPlatformTitle = 'Cross-Platform Apps';
+
   static const String aboutHighlightCrossPlatformBody =
-      'Android, iOS, and web shipped from one codebase.';
+      'One Flutter codebase for Android, iOS, and Flutter Web.';
 
-  static const String aboutHighlightPerformanceTitle = 'Performance First';
+  static const String aboutHighlightPerformanceTitle = 'Performance Optimized';
+
   static const String aboutHighlightPerformanceBody =
-      'Smooth 60fps motion and lean, efficient rebuilds.';
+      'Fast, smooth, and production-ready Flutter applications.';
 
   // ===========================
   // About — Stats
   // ===========================
 
-  static const String aboutStatExperienceValue = '2+';
+  static const String aboutStatExperienceValue = '1+';
   static const String aboutStatExperienceLabel = 'Years Experience';
 
   static const String aboutStatProjectsValue = '15+';
@@ -477,9 +491,11 @@ class AppStrings {
   static const String githubUrl = 'https://github.com/OwaisRaza1941';
   static const String linkedInUrl =
       'https://www.linkedin.com/in/owais-raza-47273a347/';
-  static const String instagramUrl = 'https://www.instagram.com/build_owaisraza';
+  static const String instagramUrl =
+      'https://www.instagram.com/build_owaisraza';
   static const String emailUrl = 'mailto:owaisraza55670@gmail.com';
-  static const String fiverrUrl = 'https://www.fiverr.com/owaisraza1234?utm_source=chatgpt.com';
+  static const String fiverrUrl =
+      'https://www.fiverr.com/owaisraza1234?utm_source=chatgpt.com';
 
   // ===========================
   // Social icon assets (platforms FontAwesome does not ship a glyph for)

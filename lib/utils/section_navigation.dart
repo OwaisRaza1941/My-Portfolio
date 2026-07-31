@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
 import '../models/nav_item.dart';
 import 'app_durations.dart';
 
