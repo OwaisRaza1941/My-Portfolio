@@ -58,7 +58,7 @@ class AppStrings {
   // About — Header
   // ===========================
   static const String aboutBadgeEmoji = '👋';
-  
+
   static const String aboutBadge = 'About Me';
 
   static const String aboutTitle = 'Building Apps That Users Love';
@@ -316,9 +316,9 @@ class AppStrings {
   static const String projectsBadge = 'My Work';
   static const String projectsTitle = 'Featured Projects';
   static const String projectsSubtitle =
-      'A selection of Flutter apps I designed and shipped end to end — real '
-      'screens, real state management, real backends behind them.';
-
+      'Production-focused Flutter applications showcasing clean architecture, '
+      'responsive UI, Firebase integration, state management, and scalable '
+      'mobile solutions.';
   // ===========================
   // Projects — Actions
   // ===========================
@@ -338,29 +338,36 @@ class AppStrings {
   static const String projectSwiftCartTitle = 'SwiftCart';
   static const String projectSwiftCartCategory = 'E-Commerce';
   static const String projectSwiftCartBody =
-      'A full shopping app — product catalog, cart, checkout and order history '
-      'wired to Firebase, with a reactive GetX layer keeping the UI in sync.';
+      'A complete e-commerce application built with Flutter and Firebase, '
+      'allowing users to browse products, manage their cart, authenticate '
+      'securely, and place orders through a modern, responsive interface.';
   static const List<String> projectSwiftCartFeatures = [
-    'Product catalog with search & filters',
-    'Cart, checkout and order history',
-    'Firebase auth and secure user data',
+    'Firebase Authentication',
+    'Product search & category filters',
+    'Shopping cart & favorites',
+    'Dynamic Product Detail Screen '
+        'Clean GetX architecture',
+    'Checkout Screen & Place Order',
   ];
   static const List<String> projectSwiftCartTech = [
     'Flutter',
-    'GetX',
     'Firebase',
+    'GetX',
     'Firestore',
+    'MVC Architecture',
   ];
 
   static const String projectChatTitle = 'Realtime Chat App';
   static const String projectChatCategory = 'Messaging';
   static const String projectChatBody =
-      'A one-to-one messaging app with realtime delivery, presence and image '
-      'sharing, built on Firestore streams so every screen updates instantly.';
+      'A real-time messaging application with Firebase that enables secure '
+      'one-to-one conversations, instant message delivery, image sharing, and '
+      'responsive chat experience across devices.';
   static const List<String> projectChatFeatures = [
-    'Realtime one-to-one messaging',
-    'Online presence & read receipts',
-    'Image sharing via Firebase Storage',
+    'Realtime messaging',
+    'Firebase Authentication',
+    'Image sharing',
+    'Online status & message updates',
   ];
   static const List<String> projectChatTech = [
     'Flutter',
@@ -370,20 +377,22 @@ class AppStrings {
   ];
 
   static const String projectFoodTitle = 'Food Delivery App';
-  static const String projectFoodCategory = 'Food & Delivery';
+  static const String projectFoodCategory = 'Restaurant';
   static const String projectFoodBody =
-      'A restaurant ordering experience with categorized menus, a live cart '
-      'and order tracking — animated, image-heavy screens kept at 60fps.';
+      'A modern food ordering application featuring restaurant browsing, menu '
+      'categories, cart management, and responsive UI designed for smooth user '
+      'experience.';
   static const List<String> projectFoodFeatures = [
-    'Categorized menu & restaurant browsing',
-    'Live cart with quantity and totals',
-    'Order placement and status tracking',
+    'Restaurant & menu browsing',
+    'Shopping cart',
+    'Responsive UI',
+    'Smooth animations',
   ];
   static const List<String> projectFoodTech = [
     'Flutter',
     'GetX',
-    'REST API',
     'Firebase',
+    'REST API',
   ];
 
   static const String projectTaskTitle = 'Task Manager';
