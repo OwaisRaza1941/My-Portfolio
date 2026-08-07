@@ -501,7 +501,7 @@ class AppStrings {
   static const String linkedInUrl =
       'https://www.linkedin.com/in/owais-raza-47273a347/';
   static const String instagramUrl =
-      'https://www.instagram.com/build_owaisraza';
+      'https://www.instagram.com/build_withowaisraza?igsh=MXFta2c3cTVucXNqcw==';
   static const String emailUrl = 'mailto:owaisraza55670@gmail.com';
   static const String fiverrUrl =
       'https://www.fiverr.com/owaisraza1234?utm_source=chatgpt.com';
@@ -513,5 +513,5 @@ class AppStrings {
   /// Transparent single-color wordmark, tinted at render time like the glyphs.
   static const String fiverrIconAsset = 'assets/images/fiverr.png';
   static const String downloadCvUrl =
-      'https://drive.google.com/file/d/1f4nm_6FXZrh8lm4sIk2-vOCqe2RF6LRq/view?usp=sharing';
+      'https://drive.google.com/file/d/1J3qWUDM9eAp-djbh8tALGrSBhwBGTvxa/view?usp=sharing';
 }
