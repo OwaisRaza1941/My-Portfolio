@@ -530,6 +530,10 @@ class AppStrings {
   // ===========================
 
   static const String githubUrl = 'https://github.com/OwaisRaza1941';
+
+  /// Repo for the SwiftCart project card's View Code / Live Demo actions.
+  static const String swiftCartRepoUrl =
+      'https://github.com/OwaisRaza1941/SwiftCart-E--commerce-App';
   static const String linkedInUrl =
       'https://www.linkedin.com/in/owais-raza-47273a347/';
   static const String instagramUrl =

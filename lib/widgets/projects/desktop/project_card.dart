@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../models/project_item.dart';
 import '../../../utils/app_color.dart';
@@ -93,8 +94,12 @@ class _CardImage extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () =>
-            showProjectImageZoom(context, imageAsset: project.imageAsset),
+        onTap: () => showProjectImageZoom(
+          context,
+          images: project.screenshots.isNotEmpty
+              ? project.screenshots
+              : [project.imageAsset],
+        ),
         child: AspectRatio(
           aspectRatio: AppDimensions.projectCardImageAspectRatio,
           child: Stack(
@@ -294,7 +299,11 @@ class _CardBody extends StatelessWidget {
           children: [
             PrimaryButton(
               label: AppStrings.projectViewCode,
-              icon: Icons.code_rounded,
+              iconWidget: const FaIcon(
+                FontAwesomeIcons.github,
+                size: 16,
+                color: AppColors.buttonText,
+              ),
               height: AppDimensions.projectCardActionButtonHeight,
               fontSize: AppDimensions.projectCardActionFontSize,
               onPressed: () => onOpenUrl(project.repoUrl),

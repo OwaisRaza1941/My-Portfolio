@@ -13,6 +13,7 @@ class ProjectItem {
     required this.tech,
     required this.repoUrl,
     this.liveUrl,
+    this.screenshots = const [],
   });
 
   /// Project name (e.g. "SwiftCart").
@@ -38,4 +39,8 @@ class ProjectItem {
 
   /// Optional live build. When null the row shows only the code action.
   final String? liveUrl;
+
+  /// Extra screenshots shown in the zoom gallery, in swipe order. When empty
+  /// the gallery falls back to just [imageAsset].
+  final List<String> screenshots;
 }

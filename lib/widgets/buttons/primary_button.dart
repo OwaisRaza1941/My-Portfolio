@@ -17,6 +17,7 @@ class PrimaryButton extends StatelessWidget {
     required this.label,
     required this.onPressed,
     this.icon,
+    this.iconWidget,
     this.height = AppDimensions.buttonHeight,
     this.horizontalPadding = AppDimensions.buttonHorizontalPadding,
     this.iconSize = _iconSize,
@@ -26,8 +27,12 @@ class PrimaryButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
 
-  /// Optional leading icon (FontAwesome or Material).
+  /// Optional leading Material icon. Ignored when [iconWidget] is given.
   final IconData? icon;
+
+  /// Optional leading icon widget (e.g. a FontAwesome `FaIcon`) for glyphs
+  /// Material's `IconData` can't represent, such as brand marks.
+  final Widget? iconWidget;
 
   // Size overrides so compact layouts (tablet/mobile) can shrink the button
   // without duplicating this widget. [fontSize] null keeps the base style.
@@ -76,6 +81,7 @@ class PrimaryButton extends StatelessWidget {
             child: _ButtonContent(
               label: label,
               icon: icon,
+              iconWidget: iconWidget,
               iconSize: iconSize,
               fontSize: fontSize,
             ),
@@ -91,12 +97,14 @@ class _ButtonContent extends StatelessWidget {
   const _ButtonContent({
     required this.label,
     this.icon,
+    this.iconWidget,
     required this.iconSize,
     this.fontSize,
   });
 
   final String label;
   final IconData? icon;
+  final Widget? iconWidget;
   final double iconSize;
   final double? fontSize;
 
@@ -105,7 +113,10 @@ class _ButtonContent extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (icon != null) ...[
+        if (iconWidget != null) ...[
+          iconWidget!,
+          const SizedBox(width: AppDimensions.buttonIconGap),
+        ] else if (icon != null) ...[
           Icon(icon, size: iconSize, color: AppColors.buttonText),
           const SizedBox(width: AppDimensions.buttonIconGap),
         ],
