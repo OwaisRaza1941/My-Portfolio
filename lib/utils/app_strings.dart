@@ -357,27 +357,8 @@ class AppStrings {
     'MVC Architecture',
   ];
 
-  static const String projectChatTitle = 'Realtime Chat App';
-  static const String projectChatCategory = 'Messaging';
-  static const String projectChatBody =
-      'A real-time messaging application with Firebase that enables secure '
-      'one-to-one conversations, instant message delivery, image sharing, and '
-      'responsive chat experience across devices.';
-  static const List<String> projectChatFeatures = [
-    'Realtime messaging',
-    'Firebase Authentication',
-    'Image sharing',
-    'Online status & message updates',
-  ];
-  static const List<String> projectChatTech = [
-    'Flutter',
-    'Firestore',
-    'Firebase Auth',
-    'Storage',
-  ];
-
-  static const String projectFoodTitle = 'Food Delivery App';
-  static const String projectFoodCategory = 'Restaurant';
+  static const String projectFoodTitle = 'BoBo Food';
+  static const String projectFoodCategory = 'Food Delivery';
   static const String projectFoodBody =
       'A modern food ordering application featuring restaurant browsing, menu '
       'categories, cart management, and responsive UI designed for smooth user '
@@ -395,21 +376,72 @@ class AppStrings {
     'REST API',
   ];
 
-  static const String projectTaskTitle = 'Task Manager';
-  static const String projectTaskCategory = 'Productivity';
-  static const String projectTaskBody =
-      'A daily planner with projects, priorities and reminders, backed by '
-      'local storage so the whole board stays usable completely offline.';
-  static const List<String> projectTaskFeatures = [
-    'Projects, priorities and due dates',
-    'Local reminders & notifications',
-    'Offline-first SQLite persistence',
+  static const String projectRealEstateTitle = 'EstateAI';
+  static const String projectRealEstateCategory = 'AI Real Estate';
+  static const String projectRealEstateBody =
+      'An AI-assisted real estate platform that matches buyers with listings, '
+      'summarizes property details, and streamlines browsing, filtering and '
+      'scheduling viewings.';
+  static const List<String> projectRealEstateFeatures = [
+    'AI-powered property matching',
+    'Listing search & filters',
+    'Map-based browsing',
+    'Agent scheduling & inquiries',
   ];
-  static const List<String> projectTaskTech = [
+  static const List<String> projectRealEstateTech = [
     'Flutter',
-    'SQLite',
-    'Provider',
-    'Notifications',
+    'AI/ML',
+    'Firebase',
+    'Google Maps',
+  ];
+
+  static const String projectMedicalTitle = 'MediCare';
+  static const String projectMedicalCategory = 'Medical';
+  static const String projectMedicalBody =
+      'A compact medical clinic website covering services, doctor profiles and '
+      'appointment booking, built to load fast and stay easy to navigate on '
+      'any device.';
+  static const List<String> projectMedicalFeatures = [
+    'Doctor profiles & services',
+    'Appointment booking',
+    'Responsive, lightweight UI',
+  ];
+  static const List<String> projectMedicalTech = [
+    'Flutter',
+    'Firebase',
+    'Responsive Web',
+  ];
+
+  static const String projectGymTitle = 'FitZone';
+  static const String projectGymCategory = 'Fitness';
+  static const String projectGymBody =
+      'A gym membership and workout tracking app with class schedules, trainer '
+      'booking and progress tracking to keep members engaged.';
+  static const List<String> projectGymFeatures = [
+    'Class schedules & bookings',
+    'Workout & progress tracking',
+    'Membership management',
+  ];
+  static const List<String> projectGymTech = [
+    'Flutter',
+    'GetX',
+    'Firebase',
+  ];
+
+  static const String projectHouseRentTitle = 'RentEasy';
+  static const String projectHouseRentCategory = 'House Rent';
+  static const String projectHouseRentBody =
+      'A house rental platform for browsing verified listings, comparing '
+      'prices and locations, and contacting owners directly to book a viewing.';
+  static const List<String> projectHouseRentFeatures = [
+    'Verified rental listings',
+    'Location & price filters',
+    'Direct owner contact',
+  ];
+  static const List<String> projectHouseRentTech = [
+    'Flutter',
+    'GetX',
+    'Firebase',
   ];
 
   // ===========================

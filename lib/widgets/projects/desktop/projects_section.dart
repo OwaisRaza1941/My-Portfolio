@@ -5,23 +5,26 @@ import '../../../utils/app_dimensions.dart';
 import '../../../utils/app_durations.dart';
 import '../../../utils/app_strings.dart';
 import '../../common/fade_slide_in.dart';
-import 'project_showcase.dart';
 import 'projects_footer.dart';
+import 'projects_grid.dart';
 import 'projects_header.dart';
 
-/// The full desktop projects section: a centered header over four alternating
-/// showcase rows, closed by a "more on GitHub" panel.
+/// The full desktop projects section: a centered header over a responsive
+/// grid of project cards, closed by a "more on GitHub" panel.
 ///
 /// ```
 ///                        💼 MY WORK
 ///                    Featured Projects
 ///         A selection of Flutter apps I designed and shipped…
 ///
-///   [ 📱 ]   01 —— E-COMMERCE            02 —— MESSAGING   [ 📱 ]
-///            SwiftCart                   Realtime Chat App
+///   [ SwiftCart ]   [ BoBo Food ]    [ EstateAI ]
+///   [ MediCare  ]   [ FitZone   ]    [ RentEasy ]
 ///
 ///   [ More on GitHub            (Browse All Projects) ]
 /// ```
+///
+/// Each card's screenshot opens full-screen over a blurred backdrop on tap —
+/// from a mouse click or a touch tap alike — via [ProjectsGrid].
 ///
 /// Purely presentational, like the other sections — the copy lives in
 /// [AppStrings], the layout constants in [AppDimensions], and link opening
@@ -39,8 +42,8 @@ class ProjectsSection extends StatelessWidget {
   /// Fired by the closing GitHub panel.
   final VoidCallback onBrowseAll;
 
-  /// Every project, in reading order — which is also the order the "01…04"
-  /// labels and the left/right alternation follow.
+  /// Every project, in reading order — which is also the order the grid
+  /// fills, left to right then down.
   static const List<ProjectItem> projects = [
     ProjectItem(
       title: AppStrings.projectSwiftCartTitle,
@@ -49,15 +52,6 @@ class ProjectsSection extends StatelessWidget {
       imageAsset: 'assets/images/swiftcart_app.png',
       features: AppStrings.projectSwiftCartFeatures,
       tech: AppStrings.projectSwiftCartTech,
-      repoUrl: AppStrings.githubUrl,
-    ),
-    ProjectItem(
-      title: AppStrings.projectChatTitle,
-      category: AppStrings.projectChatCategory,
-      description: AppStrings.projectChatBody,
-      imageAsset: 'assets/images/chat_app.png',
-      features: AppStrings.projectChatFeatures,
-      tech: AppStrings.projectChatTech,
       repoUrl: AppStrings.githubUrl,
     ),
     ProjectItem(
@@ -70,17 +64,44 @@ class ProjectsSection extends StatelessWidget {
       repoUrl: AppStrings.githubUrl,
     ),
     ProjectItem(
-      title: AppStrings.projectTaskTitle,
-      category: AppStrings.projectTaskCategory,
-      description: AppStrings.projectTaskBody,
-      imageAsset: 'assets/images/task_manager_app.png',
-      features: AppStrings.projectTaskFeatures,
-      tech: AppStrings.projectTaskTech,
+      title: AppStrings.projectRealEstateTitle,
+      category: AppStrings.projectRealEstateCategory,
+      description: AppStrings.projectRealEstateBody,
+      imageAsset: 'assets/images/real_estate_app.png',
+      features: AppStrings.projectRealEstateFeatures,
+      tech: AppStrings.projectRealEstateTech,
+      repoUrl: AppStrings.githubUrl,
+    ),
+    ProjectItem(
+      title: AppStrings.projectMedicalTitle,
+      category: AppStrings.projectMedicalCategory,
+      description: AppStrings.projectMedicalBody,
+      imageAsset: 'assets/images/medical_app.png',
+      features: AppStrings.projectMedicalFeatures,
+      tech: AppStrings.projectMedicalTech,
+      repoUrl: AppStrings.githubUrl,
+    ),
+    ProjectItem(
+      title: AppStrings.projectGymTitle,
+      category: AppStrings.projectGymCategory,
+      description: AppStrings.projectGymBody,
+      imageAsset: 'assets/images/gym_app.png',
+      features: AppStrings.projectGymFeatures,
+      tech: AppStrings.projectGymTech,
+      repoUrl: AppStrings.githubUrl,
+    ),
+    ProjectItem(
+      title: AppStrings.projectHouseRentTitle,
+      category: AppStrings.projectHouseRentCategory,
+      description: AppStrings.projectHouseRentBody,
+      imageAsset: 'assets/images/house_rent_app.png',
+      features: AppStrings.projectHouseRentFeatures,
+      tech: AppStrings.projectHouseRentTech,
       repoUrl: AppStrings.githubUrl,
     ),
   ];
 
-  /// How many stagger steps the header consumes before the rows start.
+  /// How many stagger steps the header consumes before the grid starts.
   static const int _headerSteps = 4;
 
   @override
@@ -102,20 +123,14 @@ class ProjectsSection extends StatelessWidget {
               const Center(child: ProjectsHeader()),
               const SizedBox(height: AppDimensions.projectsHeaderBottomGap),
 
-              for (var i = 0; i < projects.length; i++) ...[
-                if (i > 0) const SizedBox(height: AppDimensions.projectsRowGap),
-                FadeSlideIn(
-                  delay: AppDurations.stagger * (_headerSteps + i),
-                  child: ProjectShowcase(
-                    project: projects[i],
-                    index: i,
-                    onOpenUrl: onOpenUrl,
-                  ),
-                ),
-              ],
+              ProjectsGrid(
+                projects: projects,
+                onOpenUrl: onOpenUrl,
+                headerSteps: _headerSteps,
+              ),
               const SizedBox(height: AppDimensions.projectsFooterTopGap),
 
-              // The panel closes the section, so it enters after every row.
+              // The panel closes the section, so it enters after every card.
               FadeSlideIn(
                 delay:
                     AppDurations.stagger * (_headerSteps + projects.length),

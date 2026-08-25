@@ -268,68 +268,77 @@ class AppDimensions {
   /// Width cap for the centered header block.
   static const double projectsHeaderMaxWidth = 720;
 
-  /// Vertical rhythm between two showcase rows.
-  static const double projectsRowGap = space4XL;
-
-  /// Gap between the device preview and the copy beside it.
-  static const double projectsColumnGap = space3XL;
-
-  /// Below this section width the rows stop alternating and stack the preview
-  /// above the copy — the copy column would otherwise fall under ~320pt.
-  static const double projectsStackBreakpoint = 860;
-
   // ===========================
-  // Project Preview (device frame)
+  // Projects Grid
   // ===========================
 
-  /// Width of the phone frame. The screenshots are ~860x1825, so this keeps the
-  /// frame around 640pt tall — tall enough to read, short enough that the copy
-  /// beside it still centers naturally.
-  static const double projectPreviewWidth = 292;
+  /// Narrowest a grid tile may get before the row drops a column — the grid
+  /// picks `floor(width / minTileWidth)` columns, clamped to
+  /// [projectsGridMaxColumns].
+  static const double projectsGridMinTileWidth = 300;
 
-  /// Width / height of the framed screenshot, matching the source captures.
-  static const double projectPreviewAspectRatio = 0.475;
+  /// Most columns the grid ever shows, so ultra-wide desktops don't stretch
+  /// six cards into a single thin row.
+  static const int projectsGridMaxColumns = 3;
 
-  /// Outer radius of the phone frame, and the bezel thickness inside it.
-  static const double projectPreviewFrameRadius = 36;
-  static const double projectPreviewBezel = 10;
-
-  /// Width of the speaker notch drawn across the top of the frame.
-  static const double projectPreviewNotchWidth = 92;
-  static const double projectPreviewNotchHeight = 20;
-
-  /// How far a hovered preview lifts off the page.
-  static const double projectPreviewHoverLift = 10;
+  /// Gap between grid tiles, both across and down.
+  static const double projectsGridSpacing = spaceXL;
 
   // ===========================
-  // Project Content Column
+  // Project Card
   // ===========================
 
-  /// Width cap for the copy beside the preview, so the paragraph keeps a
-  /// comfortable measure on ultra-wide monitors.
-  static const double projectContentMaxWidth = 560;
+  /// Width / height of the cropped thumbnail at the top of each card.
+  static const double projectCardImageAspectRatio = 4 / 3;
 
-  static const double projectIndexFontSize = 13;
-  static const double projectTitleFontSize = 30;
-  static const double projectBodyFontSize = 15;
-  static const double projectFeatureFontSize = 13.5;
-  static const double projectChipFontSize = 12.5;
+  static const double projectCardRadius = radiusXL - 4;
+  static const double projectCardPadding = spaceLG;
 
-  /// Space between the category pill row and the project title.
-  static const double projectCategoryGap = spaceMD;
+  /// How far a hovered card lifts off the page.
+  static const double projectCardHoverLift = 6;
 
-  /// Space between blocks inside the copy column.
-  static const double projectContentGap = spaceLG;
+  /// How much the thumbnail scales up on hover, hinting it's tappable to zoom.
+  static const double projectCardImageHoverScale = 1.06;
+
+  static const double projectCardCategoryFontSize = 11.5;
+  static const double projectCardTitleFontSize = 19;
+  static const double projectCardBodyFontSize = 13.5;
+  static const double projectCardChipFontSize = 11;
+
+  /// Space between the category label and the title.
+  static const double projectCardCategoryGap = spaceSM;
+
+  /// Space between blocks inside the card body.
+  static const double projectCardContentGap = spaceMD;
 
   /// Gap between the two action buttons.
-  static const double projectActionGap = spaceMD;
+  static const double projectCardActionGap = spaceSM + 2;
 
-  /// Height of the action buttons on a showcase row — a notch under the hero
-  /// scale, since these repeat four times down the page.
-  static const double projectActionButtonHeight = 46;
-  static const double projectActionFontSize = 14.5;
+  static const double projectCardActionButtonHeight = 40;
+  static const double projectCardActionFontSize = 13;
 
-  /// Space between the last showcase row and the closing GitHub panel.
+  // ===========================
+  // Project Image Zoom
+  // ===========================
+
+  /// Widest the zoomed image may grow, so it stays readable rather than
+  /// stretching edge-to-edge on ultra-wide monitors.
+  static const double projectZoomMaxWidth = 900;
+
+  /// Fraction of the viewport height the zoomed image may fill.
+  static const double projectZoomMaxHeightFraction = 0.82;
+
+  /// Breathing room around the zoomed image inside the blurred backdrop.
+  static const double projectZoomPadding = spaceXL;
+
+  static const double projectZoomRadius = radiusLG;
+
+  /// Full backdrop blur strength once the zoom view has finished opening.
+  static const double projectZoomBlurSigma = 22;
+
+  static const double projectZoomCloseButtonSize = 44;
+
+  /// Space between the last grid row and the closing GitHub panel.
   static const double projectsFooterTopGap = space3XL;
 
   static const double projectsFooterPadding = space2XL - 8;
@@ -697,29 +706,7 @@ class AppDimensions {
 
   static const double tabletProjectsHeaderMaxWidth = 600;
 
-  /// Vertical rhythm between two showcase rows.
-  static const double tabletProjectsRowGap = space3XL;
-
-  /// Gap between the screenshot and the copy beside it.
-  static const double tabletProjectsColumnGap = space2XL;
-
-  /// Below this column width the tablet rows stack the screenshot above the
-  /// copy instead of squeezing the paragraph.
-  static const double tabletProjectsStackBreakpoint = 640;
-
-  /// Screenshot width on tablets — a step down from desktop so the copy column
-  /// keeps a readable measure beside it.
-  static const double tabletProjectPreviewWidth = 240;
-
-  static const double tabletProjectIndexFontSize = 12;
-  static const double tabletProjectTitleFontSize = 25;
-  static const double tabletProjectBodyFontSize = 14;
-  static const double tabletProjectFeatureFontSize = 12.5;
-  static const double tabletProjectChipFontSize = 12;
-
-  static const double tabletProjectActionButtonHeight = 44;
-  static const double tabletProjectActionFontSize = 13.5;
-
+  /// Space between the last grid row and the closing GitHub panel.
   static const double tabletProjectsFooterTopGap = space2XL;
   static const double tabletProjectsFooterPadding = spaceXL;
   static const double tabletProjectsFooterTitleFontSize = 21;
@@ -986,25 +973,7 @@ class AppDimensions {
 
   static const double mobileProjectsHeaderBottomGap = spaceXL;
 
-  /// Vertical rhythm between two stacked project cards.
-  static const double mobileProjectsRowGap = space2XL;
-
-  /// Gap between the screenshot and the copy under it.
-  static const double mobileProjectsColumnGap = spaceXL;
-
-  /// Screenshot width on phones. The captures are portrait, so anything wider
-  /// pushes the copy a full screen down the page.
-  static const double mobileProjectPreviewWidth = 210;
-
-  static const double mobileProjectIndexFontSize = 11.5;
-  static const double mobileProjectTitleFontSize = 22;
-  static const double mobileProjectBodyFontSize = 13.5;
-  static const double mobileProjectFeatureFontSize = 12;
-  static const double mobileProjectChipFontSize = 11.5;
-
-  static const double mobileProjectActionButtonHeight = 42;
-  static const double mobileProjectActionFontSize = 13;
-
+  /// Space between the last grid row and the closing GitHub panel.
   static const double mobileProjectsFooterTopGap = spaceXL;
   static const double mobileProjectsFooterPadding = spaceLG;
   static const double mobileProjectsFooterTitleFontSize = 19;
