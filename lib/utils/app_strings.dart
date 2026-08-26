@@ -549,5 +549,5 @@ class AppStrings {
   /// Transparent single-color wordmark, tinted at render time like the glyphs.
   static const String fiverrIconAsset = 'assets/images/fiverr.png';
   static const String downloadCvUrl =
-      'https://drive.google.com/file/d/1J3qWUDM9eAp-djbh8tALGrSBhwBGTvxa/view?usp=sharing';
+      'https://drive.google.com/file/d/1Qak1MgKYqNO5Pja83tSIz-CR4J6pPPHf/view?usp=sharing';
 }
