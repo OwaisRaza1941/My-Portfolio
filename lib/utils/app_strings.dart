@@ -376,72 +376,22 @@ class AppStrings {
     'REST API',
   ];
 
-  static const String projectRealEstateTitle = 'EstateAI';
-  static const String projectRealEstateCategory = 'AI Real Estate';
-  static const String projectRealEstateBody =
-      'An AI-assisted real estate platform that matches buyers with listings, '
-      'summarizes property details, and streamlines browsing, filtering and '
-      'scheduling viewings.';
-  static const List<String> projectRealEstateFeatures = [
-    'AI-powered property matching',
-    'Listing search & filters',
-    'Map-based browsing',
-    'Agent scheduling & inquiries',
+  static const String projectNestAiTitle = 'NestAI';
+  static const String projectNestAiCategory = 'Real Estate Website';
+  static const String projectNestAiBody =
+      'An AI-assisted real estate website where buyers browse listings, '
+      'filter by location, price and property type, view full listing '
+      'details, and contact the listing agent directly to schedule a tour.';
+  static const List<String> projectNestAiFeatures = [
+    'Property search with an AI assistant',
+    'Filterable listings grid (type, status, price)',
+    'Detailed listing pages with agent info',
+    'Contact agent & schedule-a-tour forms',
   ];
-  static const List<String> projectRealEstateTech = [
-    'Flutter',
-    'AI/ML',
-    'Firebase',
-    'Google Maps',
-  ];
-
-  static const String projectMedicalTitle = 'MediCare';
-  static const String projectMedicalCategory = 'Medical';
-  static const String projectMedicalBody =
-      'A compact medical clinic website covering services, doctor profiles and '
-      'appointment booking, built to load fast and stay easy to navigate on '
-      'any device.';
-  static const List<String> projectMedicalFeatures = [
-    'Doctor profiles & services',
-    'Appointment booking',
-    'Responsive, lightweight UI',
-  ];
-  static const List<String> projectMedicalTech = [
-    'Flutter',
-    'Firebase',
-    'Responsive Web',
-  ];
-
-  static const String projectGymTitle = 'FitZone';
-  static const String projectGymCategory = 'Fitness';
-  static const String projectGymBody =
-      'A gym membership and workout tracking app with class schedules, trainer '
-      'booking and progress tracking to keep members engaged.';
-  static const List<String> projectGymFeatures = [
-    'Class schedules & bookings',
-    'Workout & progress tracking',
-    'Membership management',
-  ];
-  static const List<String> projectGymTech = [
-    'Flutter',
-    'GetX',
-    'Firebase',
-  ];
-
-  static const String projectHouseRentTitle = 'RentEasy';
-  static const String projectHouseRentCategory = 'House Rent';
-  static const String projectHouseRentBody =
-      'A house rental platform for browsing verified listings, comparing '
-      'prices and locations, and contacting owners directly to book a viewing.';
-  static const List<String> projectHouseRentFeatures = [
-    'Verified rental listings',
-    'Location & price filters',
-    'Direct owner contact',
-  ];
-  static const List<String> projectHouseRentTech = [
-    'Flutter',
-    'GetX',
-    'Firebase',
+  static const List<String> projectNestAiTech = [
+    'Flutter Web',
+    'Responsive UI',
+    'AI Search',
   ];
 
   // ===========================
@@ -534,6 +484,9 @@ class AppStrings {
   /// Repo for the SwiftCart project card's View Code / Live Demo actions.
   static const String swiftCartRepoUrl =
       'https://github.com/OwaisRaza1941/SwiftCart-E--commerce-App';
+
+  /// Live build for the NestAI project card's Live Demo action.
+  static const String nestAiLiveUrl = 'https://nestai-realestate.vercel.app/';
   static const String linkedInUrl =
       'https://www.linkedin.com/in/owais-raza-47273a347/';
   static const String instagramUrl =

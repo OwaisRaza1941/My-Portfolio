@@ -91,6 +91,10 @@ class _CardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final aspectRatio = project.type == ProjectType.mobileApp
+        ? AppDimensions.projectCardImageAppAspectRatio
+        : AppDimensions.projectCardImageWebsiteAspectRatio;
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -101,7 +105,7 @@ class _CardImage extends StatelessWidget {
               : [project.imageAsset],
         ),
         child: AspectRatio(
-          aspectRatio: AppDimensions.projectCardImageAspectRatio,
+          aspectRatio: aspectRatio,
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -114,6 +118,7 @@ class _CardImage extends StatelessWidget {
                 child: Image.asset(
                   project.imageAsset,
                   fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
                   filterQuality: FilterQuality.medium,
                   errorBuilder: (context, error, stackTrace) =>
                       _ImagePlaceholder(category: project.category),
@@ -293,29 +298,33 @@ class _CardBody extends StatelessWidget {
         ),
         const SizedBox(height: AppDimensions.projectCardContentGap),
 
-        Wrap(
-          spacing: AppDimensions.projectCardActionGap,
-          runSpacing: AppDimensions.projectCardActionGap,
+        Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             PrimaryButton(
               label: AppStrings.projectViewCode,
-              iconWidget: const FaIcon(
+              iconWidget: FaIcon(
                 FontAwesomeIcons.github,
-                size: 16,
+                size: AppDimensions.projectCardActionIconSize,
                 color: AppColors.buttonText,
               ),
               height: AppDimensions.projectCardActionButtonHeight,
+              horizontalPadding: AppDimensions.projectCardActionHorizontalPadding,
               fontSize: AppDimensions.projectCardActionFontSize,
               onPressed: () => onOpenUrl(project.repoUrl),
             ),
-            if (project.liveUrl != null)
+            if (project.liveUrl != null) ...[
+              const SizedBox(width: AppDimensions.projectCardActionGap),
               SecondaryButton(
                 label: AppStrings.projectLiveDemo,
                 icon: Icons.open_in_new_rounded,
                 height: AppDimensions.projectCardActionButtonHeight,
+                horizontalPadding: AppDimensions.projectCardActionHorizontalPadding,
+                iconSize: AppDimensions.projectCardActionIconSize,
                 fontSize: AppDimensions.projectCardActionFontSize,
                 onPressed: () => onOpenUrl(project.liveUrl!),
               ),
+            ],
           ],
         ),
       ],

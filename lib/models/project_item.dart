@@ -1,5 +1,10 @@
 import 'package:flutter/widgets.dart';
 
+/// Whether a project's screenshots are a portrait mobile-app capture or a
+/// landscape website capture — the card uses this to pick a thumbnail shape
+/// that shows each kind properly instead of cropping it to fit one shape.
+enum ProjectType { mobileApp, website }
+
 /// Immutable description of one portfolio project: the screenshot shown in its
 /// device frame, the copy beside it, and the links it opens.
 @immutable
@@ -12,6 +17,7 @@ class ProjectItem {
     required this.features,
     required this.tech,
     required this.repoUrl,
+    required this.type,
     this.liveUrl,
     this.screenshots = const [],
   });
@@ -36,6 +42,10 @@ class ProjectItem {
 
   /// Repository the "View Code" action opens.
   final String repoUrl;
+
+  /// Whether the thumbnail should be framed as a portrait app shot or a
+  /// landscape website shot.
+  final ProjectType type;
 
   /// Optional live build. When null the row shows only the code action.
   final String? liveUrl;

@@ -288,8 +288,13 @@ class AppDimensions {
   // Project Card
   // ===========================
 
-  /// Width / height of the cropped thumbnail at the top of each card.
-  static const double projectCardImageAspectRatio = 4 / 3;
+  /// Thumbnail aspect ratio for a mobile-app screenshot — portrait, close to
+  /// a phone screen, so the shot fills the frame without a heavy crop.
+  static const double projectCardImageAppAspectRatio = 3 / 4;
+
+  /// Thumbnail aspect ratio for a website screenshot — landscape, matching a
+  /// browser viewport.
+  static const double projectCardImageWebsiteAspectRatio = 16 / 9;
 
   static const double projectCardRadius = radiusXL - 4;
   static const double projectCardPadding = spaceLG;
@@ -316,6 +321,11 @@ class AppDimensions {
 
   static const double projectCardActionButtonHeight = 40;
   static const double projectCardActionFontSize = 13;
+
+  /// Compact horizontal padding for the two action buttons, so "View Code"
+  /// and "Live Demo" both sit on one line instead of wrapping.
+  static const double projectCardActionHorizontalPadding = spaceMD;
+  static const double projectCardActionIconSize = 14;
 
   // ===========================
   // Project Image Zoom
