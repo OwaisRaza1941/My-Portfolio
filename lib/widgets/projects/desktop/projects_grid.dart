@@ -13,6 +13,7 @@ import 'project_card.dart';
 /// The same widget powers the desktop, tablet and mobile sections — on a
 /// phone-width column it settles to a single column on its own, so there's no
 /// separate stacked layout to maintain.
+
 class ProjectsGrid extends StatelessWidget {
   const ProjectsGrid({
     super.key,
@@ -22,12 +23,7 @@ class ProjectsGrid extends StatelessWidget {
   });
 
   final List<ProjectItem> projects;
-
-  /// Opens a project's repository or live build.
   final ValueChanged<String> onOpenUrl;
-
-  /// How many stagger steps the header above the grid consumes, so the first
-  /// card's entrance continues that rhythm rather than restarting it.
   final int headerSteps;
 
   @override
@@ -35,16 +31,19 @@ class ProjectsGrid extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         const spacing = AppDimensions.projectsGridSpacing;
-        final columns = (constraints.maxWidth /
-                AppDimensions.projectsGridMinTileWidth)
-            .floor()
-            .clamp(1, AppDimensions.projectsGridMaxColumns);
+
+        final columns =
+            (constraints.maxWidth / AppDimensions.projectsGridMinTileWidth)
+                .floor()
+                .clamp(1, AppDimensions.projectsGridMaxColumns);
+
         final tileWidth =
             (constraints.maxWidth - spacing * (columns - 1)) / columns;
 
         return Wrap(
           spacing: spacing,
           runSpacing: spacing,
+          crossAxisAlignment: WrapCrossAlignment.start,
           children: [
             for (var i = 0; i < projects.length; i++)
               SizedBox(

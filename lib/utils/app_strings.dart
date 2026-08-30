@@ -358,7 +358,7 @@ class AppStrings {
   ];
 
   static const String projectFoodTitle = 'BoBo Food';
-  static const String projectFoodCategory = 'Food Delivery';
+  static const String projectFoodCategory = 'BoBo AI Food Delivery App';
   static const String projectFoodBody =
       'A modern food ordering application featuring restaurant browsing, menu '
       'categories, cart management, and responsive UI designed for smooth user '
@@ -485,8 +485,12 @@ class AppStrings {
   static const String swiftCartRepoUrl =
       'https://github.com/OwaisRaza1941/SwiftCart-E--commerce-App';
 
-  /// Live build for the NestAI project card's Live Demo action.
+  /// Live Build for the Bobo food Github Url
   static const String nestAiLiveUrl = 'https://nestai-realestate.vercel.app/';
+
+  /// Live build for the NestAI project card's Live Demo action.
+  static const String boboLiveUrl = 'https://github.com/OwaisRaza1941/BOBO-Food-App';
+
   static const String linkedInUrl =
       'https://www.linkedin.com/in/owais-raza-47273a347/';
   static const String instagramUrl =

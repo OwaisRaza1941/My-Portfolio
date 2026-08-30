@@ -21,7 +21,11 @@ import 'project_zoom_view.dart';
 /// toward the brand blue, while the thumbnail itself scales up a touch further
 /// to hint that it's the tappable part.
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key, required this.project, required this.onOpenUrl});
+  const ProjectCard({
+    super.key,
+    required this.project,
+    required this.onOpenUrl,
+  });
 
   final ProjectItem project;
 
@@ -91,9 +95,7 @@ class _CardImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final aspectRatio = project.type == ProjectType.mobileApp
-        ? AppDimensions.projectCardImageAppAspectRatio
-        : AppDimensions.projectCardImageWebsiteAspectRatio;
+    final isApp = project.type == ProjectType.mobileApp;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -104,11 +106,16 @@ class _CardImage extends StatelessWidget {
               ? project.screenshots
               : [project.imageAsset],
         ),
-        child: AspectRatio(
-          aspectRatio: aspectRatio,
+        child: SizedBox(
+          height: 330,
           child: Stack(
             fit: StackFit.expand,
             children: [
+              // Background of the image area.
+              Container(color: AppColors.surface),
+
+              // App = contain
+              // Website = cover
               AnimatedScale(
                 scale: isHovered
                     ? AppDimensions.projectCardImageHoverScale
@@ -117,18 +124,20 @@ class _CardImage extends StatelessWidget {
                 curve: Curves.easeOut,
                 child: Image.asset(
                   project.imageAsset,
-                  fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
+                  fit: isApp ? BoxFit.contain : BoxFit.cover,
+                  alignment: Alignment.center,
                   filterQuality: FilterQuality.medium,
                   errorBuilder: (context, error, stackTrace) =>
                       _ImagePlaceholder(category: project.category),
                 ),
               ),
+
               Positioned(
                 top: AppDimensions.spaceMD,
                 left: AppDimensions.spaceMD,
                 child: _CategoryPill(label: project.category),
               ),
+
               Positioned(
                 right: AppDimensions.spaceMD,
                 bottom: AppDimensions.spaceMD,
@@ -169,13 +178,14 @@ class _CategoryPill extends StatelessWidget {
       ),
       child: Text(
         label.toUpperCase(),
-        style: AppTextStyle.withColor(
-          AppTextStyle.labelMedium,
-          AppColors.textSecondary,
-        ).copyWith(
-          fontSize: AppDimensions.projectCardCategoryFontSize,
-          letterSpacing: 1.5,
-        ),
+        style:
+            AppTextStyle.withColor(
+              AppTextStyle.labelMedium,
+              AppColors.textSecondary,
+            ).copyWith(
+              fontSize: AppDimensions.projectCardCategoryFontSize,
+              letterSpacing: 1.5,
+            ),
       ),
     );
   }
@@ -278,10 +288,14 @@ class _CardBody extends StatelessWidget {
           project.description,
           maxLines: 3,
           overflow: TextOverflow.ellipsis,
-          style: AppTextStyle.withColor(
-            AppTextStyle.bodyMedium,
-            AppColors.textTertiary,
-          ).copyWith(fontSize: AppDimensions.projectCardBodyFontSize, height: 1.6),
+          style:
+              AppTextStyle.withColor(
+                AppTextStyle.bodyMedium,
+                AppColors.textTertiary,
+              ).copyWith(
+                fontSize: AppDimensions.projectCardBodyFontSize,
+                height: 1.6,
+              ),
         ),
         const SizedBox(height: AppDimensions.projectCardContentGap),
 
@@ -309,7 +323,8 @@ class _CardBody extends StatelessWidget {
                 color: AppColors.buttonText,
               ),
               height: AppDimensions.projectCardActionButtonHeight,
-              horizontalPadding: AppDimensions.projectCardActionHorizontalPadding,
+              horizontalPadding:
+                  AppDimensions.projectCardActionHorizontalPadding,
               fontSize: AppDimensions.projectCardActionFontSize,
               onPressed: () => onOpenUrl(project.repoUrl),
             ),
@@ -319,7 +334,8 @@ class _CardBody extends StatelessWidget {
                 label: AppStrings.projectLiveDemo,
                 icon: Icons.open_in_new_rounded,
                 height: AppDimensions.projectCardActionButtonHeight,
-                horizontalPadding: AppDimensions.projectCardActionHorizontalPadding,
+                horizontalPadding:
+                    AppDimensions.projectCardActionHorizontalPadding,
                 iconSize: AppDimensions.projectCardActionIconSize,
                 fontSize: AppDimensions.projectCardActionFontSize,
                 onPressed: () => onOpenUrl(project.liveUrl!),
