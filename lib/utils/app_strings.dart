@@ -394,6 +394,81 @@ class AppStrings {
     'AI Search',
   ];
 
+  static const String projectFishWebsiteTitle = 'Fish Website';
+  static const String projectFishWebsiteCategory = 'Fish E-Commerce Website';
+  static const String projectFishWebsiteBody =
+      'A modern full-stack fish e-commerce website built with the MERN stack and TypeScript, '
+      'where customers can browse fresh seafood products, search and filter products, '
+      'view detailed product information, manage their cart, and place orders through '
+      'a responsive and user-friendly interface.';
+  static const List<String> projectFishWebsiteFeatures = [
+    'Fresh fish and seafood product listings',
+    'Product search, filtering and category browsing',
+    'Detailed product pages with dynamic data',
+    'Shopping cart and order management',
+    'Responsive design for desktop and mobile',
+    'MERN stack full-stack architecture',
+  ];
+  static const List<String> projectFishWebsiteTech = [
+    'React',
+    'TypeScript',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'Tailwind CSS',
+    'REST API',
+  ];
+
+  static const String projectMedicareTitle = 'MedCare';
+  static const String projectMedicareCategory = 'Healthcare Website';
+  static const String projectMedicareBody =
+      'A professional healthcare website built with React, TypeScript and Supabase, '
+      'designed to help patients explore medical departments, doctors and healthcare services '
+      'and book appointments through an easy-to-use online appointment system.';
+  static const List<String> projectMedicareFeatures = [
+    'Doctor and department information',
+    'Online appointment booking system',
+    'Dynamic appointment form with Supabase',
+    'Patient appointment data management',
+    'Responsive healthcare-focused UI',
+    'Supabase database integration',
+    'Form validation and error handling',
+  ];
+  static const List<String> projectMedicareTech = [
+    'React',
+    'TypeScript',
+    'Supabase',
+    'Tailwind CSS',
+    'Vite',
+    'Responsive UI',
+  ];
+
+static const String projectRestaurantTitle = 'Restaurant Website';
+static const String projectRestaurantCategory = 'Restaurant Website';
+static const String projectRestaurantBody =
+    'A modern and responsive restaurant website built with React, TypeScript and Tailwind CSS, '
+    'designed to showcase the restaurant menu, featured dishes, services and contact information '
+    'with an engaging and user-friendly interface.';
+
+static const List<String> projectRestaurantFeatures = [
+  'Modern restaurant landing page',
+  'Dynamic food menu and category sections',
+  'Featured dishes and food cards',
+  'Restaurant services and information',
+  'Contact and reservation section',
+  'Responsive design for mobile and desktop',
+  'Smooth and interactive user experience',
+];
+
+static const List<String> projectRestaurantTech = [
+  'React',
+  'TypeScript',
+  'Tailwind CSS',
+  'Vite',
+  'Responsive UI',
+];
+
+
   // ===========================
   // Contact — Header
   // ===========================
@@ -488,8 +563,12 @@ class AppStrings {
   /// Live Build for the Bobo food Github Url
   static const String nestAiLiveUrl = 'https://nestai-realestate.vercel.app/';
 
+  // Live Build for the Bobo food Github Url
+  static const String marinaCoLive = 'https://nestai-realestate.vercel.app/';
+
   /// Live build for the NestAI project card's Live Demo action.
-  static const String boboLiveUrl = 'https://github.com/OwaisRaza1941/BOBO-Food-App';
+  static const String boboLiveUrl =
+      'https://github.com/OwaisRaza1941/BOBO-Food-App';
 
   static const String linkedInUrl =
       'https://www.linkedin.com/in/owais-raza-47273a347/';

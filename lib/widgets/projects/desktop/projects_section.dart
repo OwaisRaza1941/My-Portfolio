@@ -102,6 +102,69 @@ class ProjectsSection extends StatelessWidget {
         'assets/images/real_state_website_conatct_agent.png',
       ],
     ),
+
+    // ==================== Marina Co ====================
+    ProjectItem(
+      title: AppStrings.projectFishWebsiteTitle,
+      category: AppStrings.projectFishWebsiteCategory,
+      description: AppStrings.projectFishWebsiteBody,
+      imageAsset: 'assets/images/marina_co_services.png',
+      features: AppStrings.projectFishWebsiteFeatures,
+      tech: AppStrings.projectFishWebsiteTech,
+      repoUrl: AppStrings.githubUrl,
+      liveUrl: 'https://marina-co-websites.vercel.app/#home',
+      type: ProjectType.website,
+      screenshots: [
+        'assets/images/marina_co_services.png',
+        'assets/images/marina_co_ourcraft.png',
+        'assets/images/marina_co_voices.png',
+        'assets/images/marina_co_gallery.png',
+        'assets/images/marina_co_contact.png',
+        'assets/images/marina_co_footer.png'
+      ],
+    ),
+
+    // ==================== Avari Tower ====================
+    ProjectItem(
+      title: AppStrings.projectRestaurantTitle,
+      category: AppStrings.projectRestaurantCategory,
+      description: AppStrings.projectRestaurantBody,
+      imageAsset: 'assets/images/aisa_website_home.png',
+      features: AppStrings.projectRestaurantFeatures,
+      tech: AppStrings.projectRestaurantTech,
+      repoUrl: AppStrings.githubUrl,
+      liveUrl: 'https://aisa-live-avari-tower-websites.vercel.app/',
+      type: ProjectType.website,
+      screenshots: [
+        'assets/images/aisa_website_home.png',
+        'assets/images/aisa_website_gallery.png',
+        'assets/images/aisa_website_feeling.png',
+        'assets/images/aisa_website_ourstory.png',
+        'assets/images/aisa_reveiws.png',
+        'assets/images/aisa_website_map.png',
+      ],
+    ),
+
+    // ==================== MedCare ====================
+    ProjectItem(
+      title: AppStrings.projectMedicareTitle,
+      category: AppStrings.projectMedicareCategory,
+      description: AppStrings.projectMedicareBody,
+      imageAsset: 'assets/images/medicare_home.png',
+      features: AppStrings.projectMedicareFeatures,
+      tech: AppStrings.projectMedicareTech,
+      repoUrl: AppStrings.githubUrl,
+      liveUrl: 'https://medicare-website-pi.vercel.app/',
+      type: ProjectType.website,
+      screenshots: [
+        'assets/images/medicare_home.png',
+        'assets/images/medicare_services.png',
+        'assets/images/medicare_doctors.png',
+        'assets/images/medicare_about.png',
+        'assets/images/medicare_contact.png',
+        'assets/images/medicare_footer.png',
+      ],
+    ),
   ];
 
   /// How many stagger steps the header consumes before the grid starts.
@@ -135,8 +198,7 @@ class ProjectsSection extends StatelessWidget {
 
               // The panel closes the section, so it enters after every card.
               FadeSlideIn(
-                delay:
-                    AppDurations.stagger * (_headerSteps + projects.length),
+                delay: AppDurations.stagger * (_headerSteps + projects.length),
                 child: ProjectsFooter(onBrowseAll: onBrowseAll),
               ),
             ],
